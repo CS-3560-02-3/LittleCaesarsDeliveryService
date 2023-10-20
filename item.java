@@ -10,7 +10,7 @@ public class item {
         this.price = price;
     }
 
-    //getters 
+    //getters  
     public String itemName() {
         return this.name;
     }
