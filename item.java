@@ -3,7 +3,7 @@ public class item {
     String description;
     double price;
 
-    public item(String name, String description, double price) {
+    public item(String name, String description, double price) {   
         //the items attributes 
         this.name = name;
         this.description = description;
