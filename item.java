@@ -1,8 +1,8 @@
 public class item {
     //varibles
-    String name;
-    String description;
-    double price;
+    private String name;
+    private String description;
+    private double price;
 
     public item(String name, String description, double price) {   
         //the items attributes 
