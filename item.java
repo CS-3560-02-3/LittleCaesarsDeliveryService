@@ -1,18 +1,18 @@
 public class item {
-    String itemName;
+    String name;
     String description;
     double price;
 
-    public item(String item, String description, double price) {
+    public item(String name, String description, double price) {
         //the items attributes 
-        this.itemName = item;
+        this.name = name;
         this.description = description;
         this.price = price;
     }
 
     //getters 
     public String itemName() {
-        return this.itemName;
+        return this.name;
     }
 
     public String description() {
