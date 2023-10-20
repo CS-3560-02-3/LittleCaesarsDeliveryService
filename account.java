@@ -18,13 +18,21 @@ public class account {
     public String getUserName() {
         return userName;
     }
-
+    
     public String getDeliveryAddress() {
         return deliveryAddress;
+    }
+    
+    public void updateDeliveryAddress(String newDeliveryAddress) {
+        deliveryAddress = newDeliveryAddress;
     }
 
     public String getBillingInfo() {
         return billingInfo;
+    }
+    
+    public void updateBillingInfo(String newBillingInfo) {
+        billingInfo = newBillingInfo;
     }
 
     public int getUserID() {
@@ -33,5 +41,9 @@ public class account {
 
     public String getPassWord() {
         return passWord;
+    }
+
+    public void updatePassWord(String newPassWord) {
+        passWord = newPassWord;
     }
 }
