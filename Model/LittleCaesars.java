@@ -11,11 +11,12 @@ import java.io.FileReader;
 public class LittleCaesars {
     static final String DB_URL = "jdbc:mysql://localhost:3306/CS3560";
     static final String USER = "root";
+    //change the password so you can view it. It is the password for your SQL login
     static final String PASSWORD = "littleCaesars";
 
     public static void main(String[] args) throws Exception {
         try (Connection connection = DriverManager.getConnection(DB_URL, USER, PASSWORD); Statement statement = connection.createStatement();) {
-
+            //change the file path name to the sql file location in order to run it
             String filePath = "C:/Users/AwesomePiggy44/Desktop/Code/Java Code/CS 3560/Database/cs3560.sql";
             String sql = readSQLFromFile(filePath);
 
