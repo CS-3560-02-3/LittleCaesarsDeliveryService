@@ -12,7 +12,6 @@ import javafx.stage.Stage;
 public class orderController {
     private Stage stage;
     private Scene scene;
-    private Parent root;
 
     public void switchToMenu(ActionEvent e) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("view/orderViewUI.fxml"));

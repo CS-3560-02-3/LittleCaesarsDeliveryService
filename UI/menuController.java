@@ -12,7 +12,6 @@ import javafx.stage.Stage;
 public class menuController {
     private Stage stage;
     private Scene scene;
-    private Parent root;
 
     public void switchToEdit(ActionEvent event) throws IOException{
         Parent root = FXMLLoader.load(getClass().getResource("view/menuEdit.fxml"));

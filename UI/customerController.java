@@ -12,7 +12,6 @@ import javafx.stage.Stage;
 public class customerController {
     private Stage stage;
     private Scene scene;
-    private Parent root;
 
     public void switchToScene1(ActionEvent event) throws IOException{
         Parent root = FXMLLoader.load(getClass().getResource("view/customerRegister.fxml"));

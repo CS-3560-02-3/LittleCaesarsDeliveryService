@@ -15,7 +15,6 @@ import javafx.stage.Stage;
 public class mainMenuController {
     private Stage stage;
     private Scene scene;
-    private Parent root;
 
     @FXML
     private StackPane hoverContent;
@@ -41,7 +40,7 @@ public class mainMenuController {
     // Additional methods for handling button actions, if needed
     @FXML
     private void switchToUserLogin(ActionEvent e) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("view/employeeLoginViewUI.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("view/customerLoginViewUI.fxml"));
         stage = (Stage)((Node)e.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
