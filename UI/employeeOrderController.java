@@ -12,7 +12,6 @@ import javafx.stage.Stage;
 public class employeeOrderController {
     private Stage stage;
     private Scene scene;
-    private Parent root;
 
     public void switchToEmployeeOrderScene(ActionEvent event) throws IOException {
 
