@@ -22,7 +22,7 @@ public class loginCustomer extends Application{
     }
     public void start(Stage stage) throws Exception{
         try{
-            FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("customerRegister.fxml"));
+            FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("view/customerRegister.fxml"));
             Parent parentRoot = (Parent) fxmlloader.load();
             Scene scene = new Scene(parentRoot);
             stage.setScene(scene);
@@ -32,21 +32,6 @@ public class loginCustomer extends Application{
             e.printStackTrace();
         }
         
-    }
-    public void switchToScene1(ActionEvent event) throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("customerRegister.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    
-    }
-    public void switchToScene2(ActionEvent event) throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("customerRegister2.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
     }
     
 }
