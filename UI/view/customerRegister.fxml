@@ -37,6 +37,6 @@
       <TextField layoutX="263.0" layoutY="306.0" prefHeight="24.0" prefWidth="163.0" />
       <CheckBox layoutX="262.0" layoutY="348.0" mnemonicParsing="false" text="Accept Terms and Conditions" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d07d00" height="6.0" layoutX="241.0" layoutY="374.0" stroke="BLACK" strokeType="INSIDE" width="462.0" />
-      <Button layoutX="274.0" layoutY="395.0" mnemonicParsing="false" onAction="#switchToScene2" prefHeight="39.0" prefWidth="140.0" text="CONTINUE" textFill="#ff9000" />
+      <Button layoutX="274.0" layoutY="395.0" mnemonicParsing="false" onAction="#switchToCreateCustomerAccount2" prefHeight="39.0" prefWidth="140.0" text="CONTINUE" textFill="#ff9000" />
    </children>
 </AnchorPane>
