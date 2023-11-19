@@ -92,4 +92,20 @@ public class orderController {
         stage.setScene(scene);
         stage.show();
     }
+
+    public void switchToConfirmationScreen(ActionEvent e) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("view/confirmationScreenUI.fxml"));
+        stage = (Stage)((Node)e.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void switchToMainMenu(ActionEvent e) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("view/menu.fxml"));
+        stage = (Stage)((Node)e.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 }

@@ -37,5 +37,6 @@
       <Button layoutX="360.0" layoutY="223.0" mnemonicParsing="false" text="+" />
       <Button layoutX="822.0" layoutY="223.0" mnemonicParsing="false" text="+" />
       <Button layoutX="822.0" layoutY="506.0" mnemonicParsing="false" text="+" />
+      <Button layoutX="675.0" layoutY="35.0" mnemonicParsing="false" onAction="#switchToMainMenu" text="Back to Main Menu" />
    </children>
 </AnchorPane>
