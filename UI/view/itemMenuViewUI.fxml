@@ -28,5 +28,6 @@
             <Font size="48.0" />
          </font>
       </Label>
+      <Button layoutX="753.0" layoutY="25.0" mnemonicParsing="false" onAction="#switchToMainMenu" text="Back to Main Menu" />
    </children>
 </AnchorPane>

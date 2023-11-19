@@ -47,6 +47,6 @@
       <TextField layoutX="262.0" layoutY="434.0" prefHeight="25.0" prefWidth="117.0" />
       <TextField layoutX="491.0" layoutY="434.0" prefHeight="25.0" prefWidth="117.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#da8906" height="7.0" layoutX="238.0" layoutY="502.0" stroke="BLACK" strokeType="INSIDE" width="427.0" />
-      <Button layoutX="262.0" layoutY="527.0" mnemonicParsing="false" onAction="#switchToScene1" prefHeight="25.0" prefWidth="117.0" text="Continue" textFill="#ffb20b" />
+      <Button layoutX="262.0" layoutY="527.0" mnemonicParsing="false" onAction="#switchToCustomerMainMenu" prefHeight="25.0" prefWidth="117.0" text="Continue" textFill="#ffb20b" />
    </children>
 </AnchorPane>
