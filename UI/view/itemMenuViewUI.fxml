@@ -2,26 +2,20 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.itemMenuController">
    <children>
-      <Button layoutX="75.0" layoutY="223.0" mnemonicParsing="false" onAction="#switchToCheesePizza" text="Click to View" />
-      <Button layoutX="291.0" layoutY="223.0" mnemonicParsing="false" onAction="#switchToPepperoniPizza" text="Click to View" />
-      <Label layoutX="65.0" layoutY="126.0" text="CLASSIC CHEESE" />
-      <Label layoutX="502.0" layoutY="126.0" text="3 MEAT PIZZA" />
-      <Label layoutX="274.0" layoutY="126.0" text="CLASSIC PEPPERONI" />
-      <Label layoutX="738.0" layoutY="126.0" text="VEGGIE PIZZA" />
-      <Label layoutX="739.0" layoutY="401.0" text="2 LITER SODA" />
-      <Label layoutX="502.0" layoutY="401.0" text="CAESAR WINGS" />
-      <Label layoutX="291.0" layoutY="401.0" text="CRAZY BREAD" />
-      <Label layoutX="88.0" layoutY="401.0" text="DEEP DISH" />
-      <Button layoutX="502.0" layoutY="223.0" mnemonicParsing="false" onAction="#switchToThreeMeatPizza" text="Click to View" />
-      <Button layoutX="739.0" layoutY="223.0" mnemonicParsing="false" onAction="#switchToVeggiePizza" text="Click to View" />
+      <Button layoutX="75.0" layoutY="288.0" mnemonicParsing="false" onAction="#switchToCheesePizza" text="Click to View" />
+      <Button layoutX="287.0" layoutY="288.0" mnemonicParsing="false" onAction="#switchToPepperoniPizza" text="Click to View" />
+      <Button layoutX="508.0" layoutY="288.0" mnemonicParsing="false" onAction="#switchToThreeMeatPizza" text="Click to View" />
+      <Button layoutX="739.0" layoutY="288.0" mnemonicParsing="false" onAction="#switchToVeggiePizza" text="Click to View" />
       <Button layoutX="739.0" layoutY="506.0" mnemonicParsing="false" onAction="#switchTo2LiterSoda" text="Click to View" />
-      <Button layoutX="502.0" layoutY="506.0" mnemonicParsing="false" onAction="#switchToWings" text="Click to View" />
-      <Button layoutX="287.0" layoutY="506.0" mnemonicParsing="false" onAction="#switchToCheesyBread" text="Click to View" />
+      <Button layoutX="502.0" layoutY="506.0" mnemonicParsing="false" onAction="#switchToCheesyBread" text="Click to View" />
+      <Button layoutX="287.0" layoutY="506.0" mnemonicParsing="false" onAction="#switchToWings" text="Click to View" />
       <Button layoutX="75.0" layoutY="506.0" mnemonicParsing="false" onAction="#switchToDeepDish" text="Click to View" />
       <Label layoutX="37.0" layoutY="25.0" text="Menu">
          <font>
@@ -29,5 +23,45 @@
          </font>
       </Label>
       <Button layoutX="753.0" layoutY="25.0" mnemonicParsing="false" onAction="#switchToMainMenu" text="Back to Main Menu" />
+      <ImageView fitHeight="166.0" fitWidth="264.0" layoutX="215.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Pictures/pepperoniPizzaGuy.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="135.0" fitWidth="229.0" layoutX="24.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Pictures/cheesePizza.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="131.0" fitWidth="235.0" layoutX="458.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Pictures/threeMeatTreat.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="131.0" fitWidth="229.0" layoutX="24.0" layoutY="351.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Pictures/deepDish.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="139.0" fitWidth="229.0" layoutX="229.0" layoutY="350.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Pictures/caesarWings.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="140.0" fitWidth="229.0" layoutX="450.0" layoutY="350.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Pictures/crazyBread.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="139.0" fitWidth="229.0" layoutX="667.0" layoutY="350.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Pictures/twoLiter.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="138.0" fitWidth="229.0" layoutX="667.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Pictures/veggiePizza.jpg" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
