@@ -12,6 +12,9 @@ import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Label;
 
 public class mainMenuController {
     private Stage stage;
@@ -25,6 +28,15 @@ public class mainMenuController {
 
     @FXML
     private StackPane cannotOrderDelivery;
+
+    @FXML
+    private PasswordField passwordPasswordField;
+
+    @FXML
+    private TextField usernameTextField;
+
+    @FXML
+    private Label loginMessageLabel;
 
     @FXML
     private void initialize() {
@@ -77,5 +89,13 @@ public class mainMenuController {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    private void loginButtonOnAction(ActionEvent e) {
+
+        if(usernameTextField.getText().isEmpty() && passwordPasswordField.getText().isEmpty()) {
+            loginMessageLabel.setText("Please enter username and password");
+        }
+
     }
 }
