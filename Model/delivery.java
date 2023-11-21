@@ -1,27 +1,44 @@
 package Model;
 public class delivery {
     //private global variables
-    private int deliveryNumber;
-    private int approximateTime;
+    private int deliveryID;
+    private int estimatedTime;
+    private boolean deliveryStatus;
+    private int deliveryDate;
+     
 
     //constructor method to define the delivery number and the approximate time it will take to get to the customer's house
-    public delivery (int deliveryNumber, int approximateTime) {
-        this.deliveryNumber = deliveryNumber;
-        this.approximateTime = approximateTime;
+    public delivery (int deliveryID, int estimatedTime, boolean deliveryStatus, int deliveryDate) {
+        this.deliveryID = deliveryID;
+        //unsure about this one
+        this.estimatedTime = estimatedTime;
+        this.deliveryStatus = deliveryStatus;
+        this.deliveryDate = deliveryDate;
     } //end constructor
 
     //Gets the delivery number
-    public int getDeliveryNumber() {
-        return deliveryNumber;
+    public int getDeliveryID() {
+        return deliveryID;
     } //end getDeliveryNumber
 
-    //gets the approximate time (in minutes) that it will take to get to the customer's house
-    public int getApproximateTime() {
-        return approximateTime;
-    } //end getApproximateTime
+    //Gets the delivery status
+    public boolean getDeliveryStatus() {
+        return deliveryStatus;
+    } //end getDeliveryStatus
 
-    //method to change the approximate time just in case the delivery driver is late due to reasons
-    public void changeApproximateTime(int newTime) {
-        approximateTime = newTime;
-    } //end changeApproximateTime
+    //Gets the delivery date of the order;
+    public int getDeliveryDate() {
+        return deliveryDate;
+    } //end getDeliveryDate
+
+    //gets the approximate time (in minutes) that it will take to get to the customer's house. This depends on the amount of orders already in the system that need to be prepared
+    public int calculateEstimatedTime(int numberOfOrders) {
+        return estimatedTime;
+    } //end calculateEstimatedTime
+
+    //method to mark a delivery as delivered. Will only do something if the deliveryStatus is false
+    public void markAsDelivered(boolean deliveryStatus) {
+        if (deliveryStatus == false)
+            deliveryStatus = true;
+    } //end markAsDelivered
 } //end delivery class
