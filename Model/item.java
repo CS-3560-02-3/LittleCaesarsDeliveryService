@@ -1,32 +1,39 @@
 package Model;
+
 public class item {
-    //varibles
+    //private global varibles
+    private int itemID;
+    private int orderID;
     private String name;
-    private String description;
-    private double price;
+    private double itemPrice;
 
-    public item(String name, String description, double price) {   
-        //the items attributes 
+
+    //constructor to define the private variable
+    public item(int itemID, int orderID, String name, double itemPrice) {   
+        this.itemID = itemID;
+        this.orderID = orderID;
         this.name = name;
-        this.description = description;
-        this.price = price;
+        this.itemPrice = itemPrice;
     }
 
-    //getters 
-     
-    //gets item name
+    //method to get the item ID
+    public int getItemID() {
+        return itemID; 
+    } 
+
+    //method to get the employee ID
+    public int getOrderID() {
+        return orderID; 
+    } 
+
+    //method to get item name
     public String name() {
-        return this.name;
+        return name;
     }
 
-    //gets description
-    public String description() {
-        return this.description;
-    }
-
-    //gets price
+    //method to get item price
     public double getPrice() {
-        return this.price;
+        return itemPrice;
     }
-
+    
 }
