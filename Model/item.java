@@ -8,7 +8,7 @@ public class item {
     private double itemPrice;
 
 
-    //constructor to define the private variable
+    //constructor to define the private variables
     public item(int itemID, int orderID, String name, double itemPrice) {   
         this.itemID = itemID;
         this.orderID = orderID;
