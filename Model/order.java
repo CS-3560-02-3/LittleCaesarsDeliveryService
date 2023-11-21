@@ -1,41 +1,41 @@
 package Model;
-import java.util.List;
+import java.util.ArrayList;
 
-public class order {
+public class order extends customer {
 
     // attributes
     private int orderID;
-    private boolean orderStatus; // shipped or delivered status
-    private int arrivalTime;
-
-    private List orderList; // Data structure for the order
+    private int dateOrdered;
+    private double totalCost;
+    private double tip;
+    private ArrayList<String> orderList; // Data structure for the order
 
     // constructor for order class
-    public order(int orderID, boolean orderStatus, int arrivalTime) {
-        
+    public order(int customerID, String username, String password, String name, String deliveryAddress, String emailAddress, String bilingInformation, int orderID, int dateOrdered, double totalCost, double tip) {
+        super(customerID, username, password, name, deliveryAddress, emailAddress, bilingInformation);
         this.orderID = orderID;
-        this.orderStatus = orderStatus;
-        this.arrivalTime = arrivalTime;
+        this.dateOrdered = dateOrdered;
+        this.totalCost = totalCost;
+        this.tip = tip;
     }
-
-    // return nothing
-    public static void placeOrder() {
-        // code
-    }
-
 
     // get methods for order ID
     public int getOrderID() {
         return orderID;
     }
 
-    // get method for order status
-    public boolean getOrderStatus() {
-        return orderStatus;
+    // get method for getting the data ordered
+    public int getDateOrdered() {
+        return dateOrdered;
     }
 
-    // get method for arrival time
-    public int getArrivalTime() {
-        return arrivalTime;
+    // get method for getting the total cost
+    public double getTotalCost() {
+        return totalCost;
+    }
+
+    // get method for getting the tip
+    public double getTip() {
+        return tip;
     }
 } // end order class
