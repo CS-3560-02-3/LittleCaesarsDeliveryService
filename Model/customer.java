@@ -9,13 +9,13 @@ public class customer {
     private String emailAddress;
     private String billingInformation;
     //Constructor that creates the customer class
-    public customer(String username, String password, String name, String deliveryAddress, String emailAddress, String bilingInformation, int customerID){
+    public customer(int customerID, String username, String password, String name, String deliveryAddress, String emailAddress, String bilingInformation){
+        this.customerID = customerID;
         this.name = name;
         this.username = username;
         this.password = password;
         this.deliveryAddress = deliveryAddress;
         this.emailAddress = emailAddress;
-        this.customerID = customerID;
     }
     //returns name 
     public String name(){
@@ -45,7 +45,4 @@ public class customer {
     public String billingInformation(){
         return billingInformation;
     }
-    
-    
-
 }
