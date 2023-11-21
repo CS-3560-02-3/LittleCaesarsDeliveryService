@@ -1,41 +1,51 @@
 package Model;
-import java.util.Random;
 public class customer {
     //Attributes of customer
+    private int customerID;
+    private String username;
+    private String password;
     private String name;
-    private String phoneNumber;
+    private String deliveryAddress;
     private String emailAddress;
-    private String bankInformation;
-    private int userId;
+    private String billingInformation;
     //Constructor that creates the customer class
-    public customer(String name, String phoneNumber, String emailAddress, String bankInformation){
-        Random random = new Random();
+    public customer(String username, String password, String name, String deliveryAddress, String emailAddress, String bilingInformation, int customerID){
         this.name = name;
-        this.phoneNumber = phoneNumber;
+        this.username = username;
+        this.password = password;
+        this.deliveryAddress = deliveryAddress;
         this.emailAddress = emailAddress;
-        this.bankInformation = bankInformation;
-        userId = random.nextInt(10000);
+        this.customerID = customerID;
     }
     //returns name 
     public String name(){
-        System.out.print("hi");
         return name;
     }
-    //returns phone number
-    public String phone(){
-        return phoneNumber;
+    //return customerID
+    public int customerID(){
+        return customerID;
     }
-    //returns email
-    public String email(){
+    //return username
+    public String username(){
+        return username;
+    }
+    //return password
+    public String password(){
+        return password;
+    }
+    //return deliveryAddess
+    public String deliveryAddress(){
+        return deliveryAddress;
+    }
+    //return emailAddress
+    public String emailAddress(){
         return emailAddress;
     }
-    //returns bank information
-    public String bank(){
-        return bankInformation;
+    //return billingInformation
+    public String billingInformation(){
+        return billingInformation;
     }
-    //returns userId
-    public int user(){
-        return userId;
-    }
+    
+    
 
 }
