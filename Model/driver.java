@@ -1,30 +1,17 @@
 package Model;
-public class driver {
-    
-    //private variables
-    private String name;
-    private String birthday;
-    private String driverLicense;
 
-    //constructor
-    public driver(String name, String birthday, String driverLicense) {
-        this.name = name;
-        this.birthday = birthday;
-        this.driverLicense = driverLicense;
+public class driver extends employee {
+    //private global variables
+    private int licensePlateNumber;
+
+    //constructor to define the private variables
+    public driver(int employeeID, String username, String password, String name, int licensePlateNumber) {
+        super(employeeID, username, password, name);
+        this.licensePlateNumber = licensePlateNumber;
     }
 
-    //gets the driver's name
-    public String name() {
-        return this.name;
-    }
-
-    //gets the driver's birthday
-    public String birthday() {
-        return this.birthday;
-    }
-
-    //gets the driver's license id
-    public String driverLicense() {
-        return this.driverLicense;
+    //gets the driver's license plate
+    public int getLicensePlateNumber() {
+        return licensePlateNumber;
     }
 }
