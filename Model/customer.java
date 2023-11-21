@@ -1,5 +1,4 @@
 package Model;
-import java.util.Random;
 public class customer {
     //Attributes of customer
     private int customerID;
@@ -10,14 +9,13 @@ public class customer {
     private String emailAddress;
     private String billingInformation;
     //Constructor that creates the customer class
-    public customer(String username, String password, String name, String deliveryAddress, String emailAddress, String bilingInformation){
-        Random random = new Random();
+    public customer(String username, String password, String name, String deliveryAddress, String emailAddress, String bilingInformation, int customerID){
         this.name = name;
         this.username = username;
         this.password = password;
         this.deliveryAddress = deliveryAddress;
         this.emailAddress = emailAddress;
-        customerID = random.nextInt(10000);
+        this.customerID = customerID;
     }
     //returns name 
     public String name(){
