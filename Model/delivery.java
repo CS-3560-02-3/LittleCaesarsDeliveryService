@@ -4,13 +4,11 @@ public class delivery {
     private int deliveryID;
     private int estimatedTime;
     private boolean deliveryStatus;
-    private int deliveryDate;
-     
+    private int deliveryDate;    
 
     //constructor method to define the delivery number and the approximate time it will take to get to the customer's house
     public delivery (int deliveryID, int estimatedTime, boolean deliveryStatus, int deliveryDate) {
         this.deliveryID = deliveryID;
-        //unsure about this one
         this.estimatedTime = estimatedTime;
         this.deliveryStatus = deliveryStatus;
         this.deliveryDate = deliveryDate;
@@ -31,8 +29,8 @@ public class delivery {
         return deliveryDate;
     } //end getDeliveryDate
 
-    //gets the approximate time (in minutes) that it will take to get to the customer's house. This depends on the amount of orders already in the system that need to be prepared
-    public int calculateEstimatedTime(int numberOfOrders) {
+    //gets the estimated time (in minutes) that it will take to get to the customer's house.
+    public int getEstimatedTime() {
         return estimatedTime;
     } //end calculateEstimatedTime
 
