@@ -50,6 +50,10 @@ public class customerController {
 
     public void switchToCustomerMainMenu(ActionEvent event) throws IOException{
 
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
         String DB_URL = "jdbc:mysql://localhost:3306/CS3560";
         String USER = "root";
         //change the password so you can view it. It is the password for your SQL login
@@ -61,15 +65,14 @@ public class customerController {
         else {
 
                 // Open a connection
-            try (
-                Connection conn = DriverManager.getConnection(DB_URL, USER, PASSWORD);
-                PreparedStatement preparedStatement = conn.prepareStatement("SELECT password FROM driver WHERE username = ?");
-            )
-            {
+            try 
+            {   
                 String username = usernameTextField.getText();
                 String password = passwordPasswordField.getText();
+                connection = DriverManager.getConnection(DB_URL, USER, PASSWORD);
+                preparedStatement = connection.prepareStatement("SELECT password FROM customer WHERE username = ?");
                 preparedStatement.setString(1, username);
-                ResultSet resultSet = preparedStatement.executeQuery();
+                resultSet = preparedStatement.executeQuery();
 
                 if (!resultSet.isBeforeFirst()) {
                     System.out.println("Username not found");
@@ -94,8 +97,35 @@ public class customerController {
                 }  
                 
                 resultSet.close();
-            } catch (SQLException e) {
+            }
+            catch (SQLException e) {
                 e.printStackTrace();
+            }
+            finally {
+                if (resultSet != null) {
+                    try {
+                        resultSet.close();
+                    } 
+                    catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (preparedStatement != null) {
+                    try {
+                        preparedStatement.close();
+                    }
+                    catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (connection != null) {
+                    try {
+                        connection.close();
+                    }
+                    catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
             }
 
             
