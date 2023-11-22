@@ -5,6 +5,7 @@ public class delivery {
     private int estimatedTime;
     private boolean deliveryStatus;
     private int deliveryDate;    
+    private driver Driver;
 
     //constructor method to define the delivery number and the approximate time it will take to get to the customer's house
     public delivery (int deliveryID, int estimatedTime, boolean deliveryStatus, int deliveryDate) {
@@ -39,4 +40,19 @@ public class delivery {
         if (deliveryStatus == false)
             deliveryStatus = true;
     } //end markAsDelivered
+
+    //method to calculate the estimated time that an order will take
+    public void calculateEstimatedTime(int numberOfOrdersBeingMade) {
+        estimatedTime = 7 * numberOfOrdersBeingMade; //random time
+    } //end calculateEstimatedTime
+
+    //method to assign a driver to a delivery
+    public void assignDriver(driver Driver) {
+        this.Driver = Driver;
+    } //end assignDriver
+
+    //method to get the assigned driver
+    public driver getAssignedDriver() {
+        return Driver;
+    } //end getAssignedDriver
 } //end delivery class

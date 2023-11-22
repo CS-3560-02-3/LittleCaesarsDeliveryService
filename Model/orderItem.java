@@ -5,9 +5,10 @@ public class orderItem {
     private int itemID;
     private int orderID;
     private int quantity;
+    private order Order;
+    private menuItems menuItem;
 
     public orderItem(int itemID, int orderID, int quantity) {
-
         this.itemID = itemID;
         this.orderID = orderID;
         this.quantity = quantity;
@@ -28,13 +29,25 @@ public class orderItem {
         return quantity;
     }
 
+    
     // method to set item quantity
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+    
+    public void updateQuantity(int newQuantity) {
+        quantity = newQuantity;
+    }
+    
+    public menuItems getMenuItem() {
+        return menuItem;
+    }
 
+    public order getOrder() {
+        return Order;
+    }
 
-
-
-
+    public double calculateItemCost(menuItems menuItem) {
+        return quantity * menuItem.getPrice();
+    }
 }
