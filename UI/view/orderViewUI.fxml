@@ -23,14 +23,14 @@
             <Font size="48.0" />
          </font>
       </Label>
-      <Button layoutX="167.0" layoutY="288.0" mnemonicParsing="false" text="+" />
-      <Button layoutX="167.0" layoutY="506.0" mnemonicParsing="false" text="+" />
-      <Button layoutX="360.0" layoutY="506.0" mnemonicParsing="false" text="+" />
-      <Button layoutX="584.0" layoutY="506.0" mnemonicParsing="false" text="+" />
-      <Button layoutX="584.0" layoutY="288.0" mnemonicParsing="false" text="+" />
-      <Button layoutX="360.0" layoutY="288.0" mnemonicParsing="false" text="+" />
-      <Button layoutX="822.0" layoutY="288.0" mnemonicParsing="false" text="+" />
-      <Button layoutX="822.0" layoutY="506.0" mnemonicParsing="false" text="+" />
+      <Button fx:id="cheese" layoutX="167.0" layoutY="288.0" mnemonicParsing="false" text="+" />
+      <Button fx:id="deepDish" layoutX="167.0" layoutY="506.0" mnemonicParsing="false" text="+" />
+      <Button fx:id="wings" layoutX="360.0" layoutY="506.0" mnemonicParsing="false" text="+" />
+      <Button fx:id="crazyBread" layoutX="584.0" layoutY="506.0" mnemonicParsing="false" text="+" />
+      <Button fx:id="meat" layoutX="584.0" layoutY="288.0" mnemonicParsing="false" text="+" />
+      <Button fx:id="pepperoni" layoutX="360.0" layoutY="288.0" mnemonicParsing="false" text="+" />
+      <Button fx:id="veggie" layoutX="822.0" layoutY="288.0" mnemonicParsing="false" text="+" />
+      <Button fx:id="drink" layoutX="822.0" layoutY="506.0" mnemonicParsing="false" text="+" />
       <Button layoutX="675.0" layoutY="35.0" mnemonicParsing="false" onAction="#switchToMainMenu" text="Back to Main Menu" />
       <ImageView fitHeight="135.0" fitWidth="229.0" layoutX="34.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
          <image>
