@@ -1,6 +1,11 @@
 package UI;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,6 +16,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 
 public class customerController {
@@ -43,16 +49,56 @@ public class customerController {
     }
 
     public void switchToCustomerMainMenu(ActionEvent event) throws IOException{
+
+        String DB_URL = "jdbc:mysql://localhost:3306/CS3560";
+        String USER = "root";
+        //change the password so you can view it. It is the password for your SQL login
+        String PASSWORD = "ilovemysql23";
         
         if(usernameTextField.getText().isEmpty() && passwordPasswordField.getText().isEmpty()) {
             loginMessageLabel.setText("Please enter username and password");
         }
         else {
-            Parent root = FXMLLoader.load(getClass().getResource("view/menu.fxml"));
-            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
+
+                // Open a connection
+            try (
+                Connection conn = DriverManager.getConnection(DB_URL, USER, PASSWORD);
+                PreparedStatement preparedStatement = conn.prepareStatement("SELECT password FROM driver WHERE username = ?");
+            )
+            {
+                String username = usernameTextField.getText();
+                String password = passwordPasswordField.getText();
+                preparedStatement.setString(1, username);
+                ResultSet resultSet = preparedStatement.executeQuery();
+
+                if (!resultSet.isBeforeFirst()) {
+                    System.out.println("Username not found");
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setContentText("Incorrect Credentials");
+                    alert.show();
+                }   
+
+                while (resultSet.next()) {
+                    String retrievedPassword = resultSet.getString("password");
+                    System.out.println(retrievedPassword);
+
+                    if(retrievedPassword.equals(password)) {
+                        // changeScene
+                        Parent root = FXMLLoader.load(getClass().getResource("view/menu.fxml"));
+                        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                        scene = new Scene(root);
+                        stage.setScene(scene);
+                        stage.show();
+                    }
+
+                }  
+                
+                resultSet.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            
         }
         
     }

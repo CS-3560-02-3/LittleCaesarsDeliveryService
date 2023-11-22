@@ -23,22 +23,22 @@ public class DButil {
     static final String USER = "root";
     static final String PASSWORD = "littleCaesars";
 
-    private Stage stage;
-    private Scene scene;
+    private static Stage stage;
+    private static Scene scene;
 
-    public void changeScene(ActionEvent event, String FXMLpath) {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource(FXMLpath));
-            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
+    // public static void changeScene(ActionEvent event, String FXMLpath) {
+    //     try {
+    //         Parent root = FXMLLoader.load(getClass().getResource(FXMLpath));
+    //         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+    //         scene = new Scene(root);
+    //         stage.setScene(scene);
+    //         stage.show();
 
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+    //     }
+    //     catch (Exception e) {
+    //         e.printStackTrace();
+    //     }
+    // }
 
     public static void employeeLogIn(ActionEvent event, String username, String password) {
         Connection connection = null;
@@ -52,7 +52,7 @@ public class DButil {
 
         try {
             connection = DriverManager.getConnection(DB_URL, USER, PASSWORD);
-            preparedStatement = connection.prepareStatement("SELECT password FROM employee WHERE username = ?");
+            preparedStatement = connection.prepareStatement("SELECT password FROM driver WHERE username = ?");
             preparedStatement.setString(1, username);
             resultSet = preparedStatement.executeQuery();
 
@@ -64,10 +64,10 @@ public class DButil {
             }
             else {
                 while (resultSet.next()) {
-                    String retriefvedPassword = resultSet.getString(password);
+                    String retrievedPassword = resultSet.getString(password);
                     
-                    if(retriefvedPassword.equals(password)) {
-                        
+                    if(retrievedPassword.equals(password)) {
+                        // changeScene
                     }
                 }
             }
