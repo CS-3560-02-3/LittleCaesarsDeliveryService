@@ -7,22 +7,16 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
-<<<<<<< HEAD
-=======
 
->>>>>>> d5d7112675a1d07fc7abb1e7eb2342522dba0106
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-<<<<<<< HEAD
-=======
 import java.sql.Statement;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
->>>>>>> d5d7112675a1d07fc7abb1e7eb2342522dba0106
 
 public class DButil {
     static final String DB_URL = "jdbc:mysql://localhost:3306/CS3560";
