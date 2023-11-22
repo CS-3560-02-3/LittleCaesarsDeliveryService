@@ -1,41 +1,51 @@
 package Model;
-import java.util.Random;
 public class customer {
     //Attributes of customer
+    private int customerID;
+    private String username;
+    private String password;
     private String name;
-    private String phoneNumber;
+    private String deliveryAddress;
     private String emailAddress;
-    private String bankInformation;
-    private int userId;
+    private String billingInformation;
     //Constructor that creates the customer class
-    public customer(String name, String phoneNumber, String emailAddress, String bankInformation){
-        Random random = new Random();
+    public customer(int customerID, String username, String password, String name, String deliveryAddress, String emailAddress, String billingInformation){
+        this.customerID = customerID;
+        this.username = username;
+        this.password = password;
         this.name = name;
-        this.phoneNumber = phoneNumber;
+        this.deliveryAddress = deliveryAddress;
         this.emailAddress = emailAddress;
-        this.bankInformation = bankInformation;
-        userId = random.nextInt(10000);
+        this.billingInformation = billingInformation;
+
     }
-    //returns name 
+    //returns customerID
+    public int customerID(){
+        return customerID;
+    }
+    //returns username
+    public String username(){
+        return username;
+    }
+    //returns password
+    public String password(){
+        return password;
+    }
+    //returns name
     public String name(){
-        System.out.print("hi");
         return name;
     }
-    //returns phone number
-    public String phone(){
-        return phoneNumber;
+    //returns deliveryAddress
+    public String deliveryAddress(){
+        return deliveryAddress;
     }
-    //returns email
-    public String email(){
+    //return emailAddress
+    public String emailAddress(){
         return emailAddress;
     }
-    //returns bank information
-    public String bank(){
-        return bankInformation;
-    }
-    //returns userId
-    public int user(){
-        return userId;
+    //return billingAddress
+    public String billingInformation(){
+        return billingInformation;
     }
 
 }
