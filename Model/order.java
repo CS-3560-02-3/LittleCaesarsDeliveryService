@@ -8,7 +8,7 @@ public class order extends customer {
     private int dateOrdered;
     private double totalCost;
     private double tip;
-    private ArrayList<String> orderList; // Data structure for the order
+    private ArrayList<menuItems> orderList; // Data structure for the order
 
     // constructor for order class
     public order(int customerID, String username, String password, String name, String deliveryAddress, String emailAddress, String bilingInformation, int orderID, int dateOrdered, double totalCost, double tip) {
@@ -37,5 +37,15 @@ public class order extends customer {
     // get method for getting the tip
     public double getTip() {
         return tip;
+    }
+
+    public void calculateTotalCost() {
+        for (int i = 0; i < orderList.size(); i++) {
+            totalCost += orderList.get(i).getPrice();
+        }
+    }
+
+    public void addItemToCart(menuItems item) {
+        orderList.add(item);
     }
 } // end order class
