@@ -1,13 +1,13 @@
 package Model;
 
-public class item {
+public class menuItems {
     //private global varibles
     private int itemID;
     private String name;
     private double itemPrice;
 
     //constructor to define the private variables
-    public item(int itemID, String name, double itemPrice) {   
+    public menuItems(int itemID, String name, double itemPrice) {   
         this.itemID = itemID;
         this.name = name;
         this.itemPrice = itemPrice;
@@ -19,7 +19,7 @@ public class item {
     }
 
     //method to get item name
-    public String name() {
+    public String getName() {
         return name;
     }
 
