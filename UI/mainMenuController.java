@@ -63,6 +63,8 @@ public class mainMenuController {
     private void hideCannotOrder() {
         cannotOrderDelivery.setVisible(false);
     }
+
+
         
     @FXML
     private void switchToUserLogin(ActionEvent e) throws IOException {
@@ -91,11 +93,11 @@ public class mainMenuController {
         stage.show();
     }
 
-    private void loginButtonOnAction(ActionEvent e) {
+    // private void loginButtonOnAction(ActionEvent e) {
 
-        if(usernameTextField.getText().isEmpty() && passwordPasswordField.getText().isEmpty()) {
-            loginMessageLabel.setText("Please enter username and password");
-        }
+    //     if(usernameTextField.getText().isEmpty() && passwordPasswordField.getText().isEmpty()) {
+    //         loginMessageLabel.setText("Please enter username and password");
+    //     }
 
-    }
+    // }
 }

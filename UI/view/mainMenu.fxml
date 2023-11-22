@@ -19,7 +19,7 @@
             <Font size="48.0" />
          </font>
       </Text>
-      <Text layoutX="591.0" layoutY="54.0" onMouseEntered="#showHoverContent" onMouseExited="#hideHoverContent" strokeType="OUTSIDE" strokeWidth="0.0" text="Hi, &quot;USER&quot;">
+      <Text layoutX="591.0" layoutY="54.0" onMouseEntered="#showHoverContent" onMouseExited="#hideHoverContent" strokeType="OUTSIDE" strokeWidth="0.0" text="Hi, GUEST">
          <font>
             <Font size="24.0" />
          </font>
