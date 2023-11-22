@@ -2,6 +2,11 @@ package UI;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import Database.DButil;
@@ -11,54 +16,28 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
 
 
-public class employeeOrderController implements Initializable{
+public class employeeOrderController {
     private Stage stage;
     private Scene scene;
-    private Parent root;
 
-    private Button loginButton;
-    private TextField usernameField;
-    private TextField passwordField;
-    private Button returnToMainMenu;
+    @FXML
+    private TextField usernameTextField;
 
+    @FXML
+    private PasswordField passwordPasswordField;
 
-    public void initialize(URL locatation, ResourceBundle resources) {
-
-        loginButton.setOnAction(new EventHandler<ActionEvent>() {
-            
-            public void handle(ActionEvent event) {
-                DButil.employeeLogIn(event, usernameField.getText(), passwordField.getText());
-            }
-        }
-
-        );
-
-        // returnToMainMenu.setOnAction(new EventHandler<ActionEvent>() {
-
-        //     public void handle(ActionEvent event) {
-        //         DButil.changeScene(event, "mainMenu.fxml");
-        //     }
-        // }
-
-        // );
-
-    }
-
-    public void switchToEmployeeOrderScene(ActionEvent event) throws IOException {
-
-        Parent root = FXMLLoader.load(getClass().getResource("view/employeeOrderViewUI.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
+    @FXML
+    private Label loginMessageLabel;
 
     public void switchToEmployeeLoginScene(ActionEvent event) throws IOException {
 
@@ -69,10 +48,90 @@ public class employeeOrderController implements Initializable{
         stage.show();
     }
 
-    // public void logout(ActionEvent event) {
-    //     Alert alert = new Alert(AlertType.CONFIRMATION);
-    //     alert.setTitle("Logout");
-    //     alert.setHeaderText
-    // }
+    public void switchToEmployeeOrderScene(ActionEvent event) throws IOException {
+
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        String DB_URL = "jdbc:mysql://localhost:3306/CS3560";
+        String USER = "root";
+        //change the password so you can view it. It is the password for your SQL login
+        String PASSWORD = "ilovemysql23";
+        
+        if(usernameTextField.getText().isEmpty() && passwordPasswordField.getText().isEmpty()) {
+            loginMessageLabel.setText("Please enter username and password");
+        }
+        else 
+        {
+
+                // Open a connection
+            try 
+            {   
+                String username = usernameTextField.getText();
+                String password = passwordPasswordField.getText();
+                connection = DriverManager.getConnection(DB_URL, USER, PASSWORD);
+                preparedStatement = connection.prepareStatement("SELECT password FROM driver WHERE username = ?");
+                preparedStatement.setString(1, username);
+                resultSet = preparedStatement.executeQuery();
+
+                if (!resultSet.isBeforeFirst()) {
+                    System.out.println("Username not found");
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setContentText("Incorrect Credentials");
+                    alert.show();
+                }   
+
+                while (resultSet.next()) {
+                    String retrievedPassword = resultSet.getString("password");
+                    System.out.println(retrievedPassword);
+
+                    if(retrievedPassword.equals(password)) {
+                        // changeScene
+                        Parent root = FXMLLoader.load(getClass().getResource("view/employeeOrderViewUI.fxml"));
+                        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                        scene = new Scene(root);
+                        stage.setScene(scene);
+                        stage.show();
+                    }
+
+                }  
+                
+                resultSet.close();
+            }
+            catch (SQLException e) {
+                e.printStackTrace();
+            }
+            finally {
+                if (resultSet != null) {
+                    try {
+                        resultSet.close();
+                    } 
+                    catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (preparedStatement != null) {
+                    try {
+                        preparedStatement.close();
+                    }
+                    catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (connection != null) {
+                    try {
+                        connection.close();
+                    }
+                    catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            
+        }
+
+    }
 
 }
