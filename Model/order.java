@@ -1,7 +1,16 @@
 package Model;
+
 import java.util.ArrayList;
 
-public class order extends customer {
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+public class order{
+    static final String DB_URL = "jdbc:mysql://localhost:3306/CS3560";
+    static final String USER = "root";
+    static final String PASSWORD = "littleCaesars";
 
     // attributes
     private int orderID;
@@ -10,14 +19,60 @@ public class order extends customer {
     private double tip;
     private ArrayList<menuItems> orderList; // Data structure for the order
     private delivery Delivery;
+    private customer Customer;
 
     // constructor for order class
-    public order(int customerID, String username, String password, String name, String deliveryAddress, String emailAddress, int cardNumber, int cardDate, int cardCVV, int orderID, int dateOrdered, double totalCost, double tip) {
-        super(customerID, username, password, name, deliveryAddress, emailAddress, cardNumber, cardDate, cardCVV);
+    public order(int orderID, int dateOrdered, double totalCost, double tip) {
         this.orderID = orderID;
         this.dateOrdered = dateOrdered;
         this.totalCost = totalCost;
         this.tip = tip;
+    }
+
+    public order(int orderID) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = DriverManager.getConnection(DB_URL, USER, PASSWORD);
+            preparedStatement = connection.prepareStatement("SELECT * FROM order WHERE orderID = ?");
+            preparedStatement.setInt(1, orderID);
+            resultSet = preparedStatement.executeQuery();
+
+            dateOrdered = resultSet.getInt("dateOrdered");
+            totalCost = resultSet.getDouble("totalCost");
+            tip = resultSet.getInt("tip");
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        finally {
+            if (resultSet != null) {
+                try {
+                    resultSet.close();
+                } 
+                catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (preparedStatement != null) {
+                try {
+                    preparedStatement.close();
+                }
+                catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (connection != null) {
+                try {
+                    connection.close();
+                }
+                catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 
     //get methods for order ID
@@ -60,5 +115,13 @@ public class order extends customer {
     //method to get the Delivery from the order
     public delivery getDelivery() {
         return Delivery;
+    }
+
+    public void assignCustomer(customer Customer) {
+        this.Customer = Customer;
+    }
+
+    public customer getCustomer() {
+        return Customer;
     }
 } // end order class

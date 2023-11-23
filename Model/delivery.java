@@ -1,5 +1,16 @@
 package Model;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 public class delivery {
+    static final String DB_URL = "jdbc:mysql://localhost:3306/CS3560";
+    static final String USER = "root";
+    static final String PASSWORD = "littleCaesars";
+
     //private global variables
     private int deliveryID;
     private int estimatedTime;
@@ -14,6 +25,52 @@ public class delivery {
         this.deliveryStatus = deliveryStatus;
         this.deliveryDate = deliveryDate;
     } //end constructor
+
+    public delivery(int deliveryID) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = DriverManager.getConnection(DB_URL, USER, PASSWORD);
+            preparedStatement = connection.prepareStatement("SELECT * FROM delivery WHERE deliveryID = ?");
+            preparedStatement.setInt(1, deliveryID);
+            resultSet = preparedStatement.executeQuery();
+
+            estimatedTime = resultSet.getInt("estimatedTime");
+            deliveryStatus = resultSet.getBoolean("deliveryStatus");
+            deliveryDate = resultSet.getInt("deliveryDate");
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        finally {
+            if (resultSet != null) {
+                try {
+                    resultSet.close();
+                } 
+                catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (preparedStatement != null) {
+                try {
+                    preparedStatement.close();
+                }
+                catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (connection != null) {
+                try {
+                    connection.close();
+                }
+                catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
 
     //Gets the delivery number
     public int getDeliveryID() {
