@@ -1,5 +1,16 @@
 package Model;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 public class customer {
+    static final String DB_URL = "jdbc:mysql://localhost:3306/CS3560";
+    static final String USER = "root";
+    static final String PASSWORD = "littleCaesars";
+
     //Attributes of customer
     private int customerID;
     private String username;
@@ -22,6 +33,57 @@ public class customer {
         this.cardNumber = cardNumber;
         this.cardDate = cardDate;
         this.cardCVV = cardCVV;
+    }
+
+    public customer(int customerID) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = DriverManager.getConnection(DB_URL, USER, PASSWORD);
+            preparedStatement = connection.prepareStatement("SELECT * FROM customer WHERE customerID = ?");
+            preparedStatement.setInt(1, customerID);
+            resultSet = preparedStatement.executeQuery();
+
+            name = resultSet.getString("name");
+            username = resultSet.getString("username");
+            password = resultSet.getString("password");
+            deliveryAddress = resultSet.getString("deliveryAddress");
+            emailAddress = resultSet.getString("emailAddress");
+            cardNumber = resultSet.getInt("cardNumber");
+            cardDate = resultSet.getInt("cardDate");
+            cardCVV = resultSet.getInt("cardCVV");
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            if (resultSet != null) {
+                try {
+                    resultSet.close();
+                } 
+                catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (preparedStatement != null) {
+                try {
+                    preparedStatement.close();
+                }
+                catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (connection != null) {
+                try {
+                    connection.close();
+                }
+                catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 
     //method to get the customer ID

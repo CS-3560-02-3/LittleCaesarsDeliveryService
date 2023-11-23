@@ -1,6 +1,16 @@
 package Model;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 public class driver {
+    static final String DB_URL = "jdbc:mysql://localhost:3306/CS3560";
+    static final String USER = "root";
+    static final String PASSWORD = "littleCaesars";
+
     //private global variables
     private int driverID;
     private String username;
@@ -17,6 +27,53 @@ public class driver {
         this.name = name;
         this.licensePlateNumber = licensePlateNumber;
     } //end driver constructor
+
+    public driver(int driverID) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = DriverManager.getConnection(DB_URL, USER, PASSWORD);
+            preparedStatement = connection.prepareStatement("SELECT * FROM driver WHERE driverID = ?");
+            preparedStatement.setInt(1, driverID);
+            resultSet = preparedStatement.executeQuery();
+
+            username = resultSet.getString("username");
+            password = resultSet.getString("password");
+            name = resultSet.getString("name");
+            licensePlateNumber = resultSet.getString("licensePlateNumber");
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        finally {
+            if (resultSet != null) {
+                try {
+                    resultSet.close();
+                } 
+                catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (preparedStatement != null) {
+                try {
+                    preparedStatement.close();
+                }
+                catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (connection != null) {
+                try {
+                    connection.close();
+                }
+                catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
 
     //method to get the driver ID
     public int getdriverID() {
