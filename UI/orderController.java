@@ -26,7 +26,7 @@ public class orderController {
 
     private Stage stage;
     private Scene scene;
-    order orderList = new order(0, null, null, null, null, null, 0, 0, 0, 0, 0, 0, 0);
+    order orderList = new order(0, 0, 0, 0);
     menuItems CheesePizza = new menuItems(0, DB_URL, 0);
     menuItems PepperoniPizza = new menuItems(0, DB_URL, 0);
     menuItems ThreeMeatTreatPizza = new menuItems(0, DB_URL, 0);
