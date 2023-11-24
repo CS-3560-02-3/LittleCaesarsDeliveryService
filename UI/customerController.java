@@ -32,6 +32,15 @@ public class customerController {
     @FXML
     private Label loginMessageLabel;
 
+    @FXML
+    private void switchToUserLogin(ActionEvent e) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("view/customerLoginViewUI.fxml"));
+        stage = (Stage)((Node)e.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
     public void switchToCreateCustomerAccount(ActionEvent event) throws IOException{
         Parent root = FXMLLoader.load(getClass().getResource("view/customerRegister.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -127,9 +136,14 @@ public class customerController {
                     }
                 }
             }
-
-            
         }
-        
+    }
+
+    public void switchToCustomerMainMenuAfterCreateAccount(ActionEvent event) throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("view/menu.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 }
