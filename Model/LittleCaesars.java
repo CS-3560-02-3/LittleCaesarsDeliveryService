@@ -13,7 +13,8 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 
 public class LittleCaesars {
-    static final String DB_URL = "jdbc:mysql://localhost:3306/CS3560";
+    // static final String DB_URL = "jdbc:mysql://localhost:3306/CS3560";
+    static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/littlecaesars";
     static final String USER = "root";
     //change the password so you can view it. It is the password for your SQL login
     static final String PASSWORD = "ilovemysql23";

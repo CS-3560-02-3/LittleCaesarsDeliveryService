@@ -20,7 +20,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class orderController {
-    static final String DB_URL = "jdbc:mysql://localhost:3306/CS3560";
+    static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/littlecaesars";
     static final String USER = "root";
     static final String PASSWORD = "littleCaesars";
 
