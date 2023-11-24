@@ -1,64 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.ScrollBar?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.orderController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #fca54e;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.orderController">
    <children>
-      <Pane layoutX="572.0" layoutY="-5.0" prefHeight="611.0" prefWidth="13.0">
-         <cursor>
-            <Cursor fx:constant="DEFAULT" />
-         </cursor>
-      </Pane>
-      <Label layoutX="578.0" layoutY="46.0" text="DELIVERY DETAILS">
+      <Label layoutX="579.0" layoutY="94.0" text="DELIVERY DETAILS">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <ListView layoutX="14.0" layoutY="94.0" prefHeight="464.0" prefWidth="541.0" />
+      <ListView layoutX="14.0" layoutY="94.0" prefHeight="445.0" prefWidth="541.0" />
       <Label layoutX="28.0" layoutY="11.0" text="CART">
          <font>
             <Font size="48.0" />
          </font>
       </Label>
-      <Label layoutX="585.0" layoutY="321.0" text="TIP">
+      <ScrollBar layoutX="541.0" layoutY="94.0" orientation="VERTICAL" prefHeight="445.0" prefWidth="14.0" />
+      <Button layoutX="14.0" layoutY="558.0" mnemonicParsing="false" onAction="#switchToMenu" text="Back to Menu" />
+      <Button fx:id="loginButton" layoutX="572.0" layoutY="470.0" mnemonicParsing="false" onAction="#switchToCustomerMainMenu" prefHeight="69.0" prefWidth="312.0" style="-fx-background-color: #FF5C00;" text="ORDER" textFill="WHITE">
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Button>
+      <Label layoutX="585.0" layoutY="357.0" text="TIP">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <ScrollBar layoutX="541.0" layoutY="94.0" orientation="VERTICAL" prefHeight="464.0" prefWidth="14.0" />
-      <CheckBox layoutX="591.0" layoutY="379.0" mnemonicParsing="false" prefWidth="53.0" text="\$1">
+      <CheckBox layoutX="591.0" layoutY="415.0" mnemonicParsing="false" prefWidth="53.0" text="\$1">
          <font>
             <Font size="16.0" />
          </font>
       </CheckBox>
-      <CheckBox layoutX="669.0" layoutY="379.0" mnemonicParsing="false" text="\$2">
+      <CheckBox layoutX="669.0" layoutY="415.0" mnemonicParsing="false" text="\$2">
          <font>
             <Font size="16.0" />
          </font>
       </CheckBox>
-      <CheckBox layoutX="740.0" layoutY="379.0" mnemonicParsing="false" text="\$3">
+      <CheckBox layoutX="740.0" layoutY="415.0" mnemonicParsing="false" text="\$3">
          <font>
             <Font size="16.0" />
          </font>
       </CheckBox>
-      <CheckBox layoutX="813.0" layoutY="379.0" mnemonicParsing="false" text="\$0">
+      <CheckBox layoutX="813.0" layoutY="415.0" mnemonicParsing="false" text="\$0">
          <font>
             <Font size="16.0" />
          </font>
       </CheckBox>
-      <Button layoutX="568.0" layoutY="430.0" mnemonicParsing="false" onAction="#switchToConfirmationScreen" text="PLACE ORDER" textFill="#ff9021">
-         <font>
-            <Font size="42.0" />
-         </font>
-      </Button>
-      <Button layoutX="14.0" layoutY="567.0" mnemonicParsing="false" onAction="#switchToMenu" text="Back to Menu" />
    </children>
 </AnchorPane>

@@ -14,7 +14,7 @@
             <Font size="48.0" />
          </font>
       </Label>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff5c00" height="21.0" layoutX="26.0" layoutY="131.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="849.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff5c00" height="8.0" layoutX="26.0" layoutY="131.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="849.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="168.0" layoutX="42.0" layoutY="176.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="168.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="168.0" layoutX="42.0" layoutY="385.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="168.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="168.0" layoutX="467.0" layoutY="176.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="168.0" />
