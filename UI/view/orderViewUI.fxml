@@ -31,7 +31,7 @@
       <Button fx:id="meatA" layoutX="624.0" layoutY="289.0" mnemonicParsing="false" onAction="#AddingToCart" text="+" />
       <Button fx:id="pepperoniA" layoutX="399.0" layoutY="289.0" mnemonicParsing="false" onAction="#AddingToCart" text="+" />
       <Button fx:id="veggieA" layoutX="841.0" layoutY="289.0" mnemonicParsing="false" onAction="#AddingToCart" text="+" />
-      <Button fx:id="drinkA" layoutX="841.0" layoutY="507.0" mnemonicParsing="false" onAction="#AddingToCart" text="+" />
+      <Button fx:id="sodaA" layoutX="841.0" layoutY="507.0" mnemonicParsing="false" onAction="#AddingToCart" text="+" />
       <Button layoutX="675.0" layoutY="35.0" mnemonicParsing="false" onAction="#switchToMainMenu" text="Back to Main Menu" />
       <ImageView fitHeight="131.0" fitWidth="235.0" layoutX="468.0" layoutY="135.0" pickOnBounds="true" preserveRatio="true">
          <image>

@@ -10,7 +10,7 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.orderController">
    <children>
       <Button layoutX="14.0" layoutY="547.0" mnemonicParsing="false" onAction="#switchToMenu" text="Back to Menu" />
-      <Button layoutX="372.0" layoutY="547.0" mnemonicParsing="false" text="Add to Cart" />
+      <Button fx:id="cheeseView" layoutX="372.0" layoutY="547.0" mnemonicParsing="false" text="Add to Cart" />
       <Label layoutX="14.0" layoutY="27.0" text="CLASSIC CHEESE PIZZA">
          <font>
             <Font size="48.0" />

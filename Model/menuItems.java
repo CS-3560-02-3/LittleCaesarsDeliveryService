@@ -34,8 +34,10 @@ public class menuItems {
             preparedStatement.setInt(1, itemID);
             resultSet = preparedStatement.executeQuery();
 
-            name = resultSet.getString("name");
-            itemPrice = resultSet.getDouble("itemPrice");
+            if (resultSet.next()) {
+                name = resultSet.getString("name");
+                itemPrice = resultSet.getDouble("price");
+            }
         }
         catch (Exception e) {
             e.printStackTrace();
