@@ -35,7 +35,7 @@ public class registerController {
     private Scene scene;
     static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/littlecaesars";
     static final String USER = "root";
-    static final String PASSWORD = "littleCaesars";
+    static final String PASSWORD = "ilovemysql23";
 
     public static customer Customer;
 
@@ -105,7 +105,7 @@ public class registerController {
             // Passwords are not the same in text box
             loginMessageLabel.setText("Passwords do not match!");
         }
-        else if(acceptCheckBox.isSelected()){
+        else if(!acceptCheckBox.isSelected()){
             loginMessageLabel.setText("Please Accept Terms and Conditions");
         }
         else {
@@ -135,6 +135,8 @@ public class registerController {
                 preparedStatement = connection.prepareStatement("SELECT username FROM customer WHERE username = ?");
                 preparedStatement.setString(1, username);
                 resultSet = preparedStatement.executeQuery();
+                
+                
 
     
 
@@ -144,6 +146,7 @@ public class registerController {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setContentText("Username is already taken");
                     alert.show();
+                    resultSet.close();
                 }
                 else {
                     customer Customer = new customer(customerID, username, password, name, deliveryAddress, emailAddress, cardNumber, expDate, cvv);
@@ -151,13 +154,56 @@ public class registerController {
                     "  (customerID, username, password, name, deliveryAddress, emailAddress, cardNumber, expDate, cvv) VALUES " +
                     " (?, ?, ?, ?, ?, ?, ?, ?, ?);";
                     preparedStatement = connection.prepareStatement(query);
+                    preparedStatement.setInt(1,customerID);
+                    preparedStatement.setString(2,username);
+                    preparedStatement.setString(3, password);
+                    preparedStatement.setString(4, name);
+                    preparedStatement.setString(5,deliveryAddress);
+                    preparedStatement.setString(6,emailAddress);
+                    preparedStatement.setString(7,cardNumber);
+                    preparedStatement.setString(8, expDate);
+                    preparedStatement.setString(9, cvv);
+                    preparedStatement.executeUpdate();
+
+                    Parent root = FXMLLoader.load(getClass().getResource("view/menu.fxml"));
+                    stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                    scene = new Scene(root);
+                    stage.setScene(scene);
+                    stage.show();
+
                 }
+                
 
             }
             catch(SQLException e) {
                 e.printStackTrace();
             }
-        
+            finally {
+                if (resultSet != null) {
+                    try {
+                        resultSet.close();
+                    } 
+                    catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (preparedStatement != null) {
+                    try {
+                        preparedStatement.close();
+                    }
+                    catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (connection != null) {
+                    try {
+                        connection.close();
+                    }
+                    catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
         }
 
         // else {

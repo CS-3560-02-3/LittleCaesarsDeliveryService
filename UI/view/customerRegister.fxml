@@ -10,7 +10,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: D9D9D9;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.customerController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: D9D9D9;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.registerController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="518.0" layoutX="74.0" layoutY="52.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="753.0" />
       <PasswordField fx:id="passwordPasswordField" layoutX="122.0" layoutY="322.0" prefHeight="25.0" prefWidth="190.0" promptText="Enter Password" style="-fx-background-color: D9D9D9;" />
@@ -42,7 +42,7 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <PasswordField fx:id="passwordPasswordField1" layoutX="122.0" layoutY="395.0" prefHeight="25.0" prefWidth="190.0" promptText="Confirm Password" style="-fx-background-color: D9D9D9;" />
+      <PasswordField fx:id="confirmPasswordPasswordField" layoutX="122.0" layoutY="395.0" prefHeight="25.0" prefWidth="190.0" promptText="Confirm Password" style="-fx-background-color: D9D9D9;" />
       <Label layoutX="120.0" layoutY="364.0" prefHeight="25.0" prefWidth="137.0" text="Confirm Password">
          <font>
             <Font size="16.0" />
