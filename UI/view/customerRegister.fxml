@@ -84,7 +84,7 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="emailTextField" layoutX="123.0" layoutY="197.0" promptText="Enter Email Address" style="-fx-background-color: D9D9D9;" />
+      <TextField fx:id="emailTextField" layoutX="123.0" layoutY="197.0" prefHeight="26.0" prefWidth="190.0" promptText="Enter Email Address" style="-fx-background-color: D9D9D9;" />
       <Label layoutX="123.0" layoutY="166.0" text="Email">
          <font>
             <Font size="16.0" />
