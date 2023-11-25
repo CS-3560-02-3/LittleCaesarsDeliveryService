@@ -17,17 +17,24 @@ import javafx.stage.Stage;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import UI.globalController;
 
 public class customerController {
     private Stage stage;
     private Scene scene;
+    private static boolean loggedIn;
+    private globalController GlobalController;
 
     @FXML
     private PasswordField passwordPasswordField;
 
     @FXML
     private TextField usernameTextField;
+
+    @FXML
+    private Button createAccountButton;
 
     @FXML
     private Label loginMessageLabel;
@@ -41,7 +48,7 @@ public class customerController {
         stage.show();
     }
 
-    public void switchToCreateCustomerAccount(ActionEvent event) throws IOException{
+    public void switchToCreateCustomerAccount(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("view/customerRegister.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -95,12 +102,15 @@ public class customerController {
                     System.out.println(retrievedPassword);
 
                     if(retrievedPassword.equals(password)) {
+
+                        setLoggedInStatus(true);
                         // changeScene
                         Parent root = FXMLLoader.load(getClass().getResource("view/menu.fxml"));
                         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
                         scene = new Scene(root);
                         stage.setScene(scene);
                         stage.show();
+                        // GlobalController.changeLoggedIn(true);
                     }
 
                 }  
@@ -137,6 +147,14 @@ public class customerController {
                 }
             }
         }
+    }
+
+    public void setLoggedInStatus(boolean status) {
+        customerController.loggedIn = status;
+    }
+
+    public boolean getLoggedInStatus() {
+        return loggedIn;
     }
 
     public void switchToCustomerMainMenuAfterCreateAccount(ActionEvent event) throws IOException{

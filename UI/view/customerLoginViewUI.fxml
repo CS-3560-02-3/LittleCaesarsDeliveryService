@@ -35,7 +35,7 @@
             <Font size="31.0" />
          </font>
       </Label>
-      <Button layoutX="229.0" layoutY="354.0" mnemonicParsing="false" onAction="#switchToCreateCustomerAccount" text="CREATE ACCOUNT" />
+      <Button fx:id="createAccountButton" layoutX="229.0" layoutY="354.0" mnemonicParsing="false" onAction="#switchToCreateCustomerAccount" text="CREATE ACCOUNT" />
       <Label fx:id="loginMessageLabel" layoutX="297.0" layoutY="159.0" textFill="RED">
          <font>
             <Font size="16.0" />
