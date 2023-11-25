@@ -35,6 +35,12 @@ public class customer {
         this.cardCVV = cardCVV;
     }
 
+    public customer(String username, String password) {
+        
+        this.username = username;
+        this.password = password;
+    }
+
     public customer(int customerID) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
