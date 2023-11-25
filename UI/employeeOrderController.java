@@ -29,6 +29,7 @@ import javafx.fxml.FXML;
 public class employeeOrderController {
     private Stage stage;
     private Scene scene;
+    private globalController globalController;
 
     @FXML
     private TextField usernameTextField;
@@ -87,6 +88,8 @@ public class employeeOrderController {
                     System.out.println(retrievedPassword);
 
                     if(retrievedPassword.equals(password)) {
+
+        
                         // changeScene
                         Parent root = FXMLLoader.load(getClass().getResource("view/employeeOrderViewUI.fxml"));
                         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
