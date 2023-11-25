@@ -23,7 +23,7 @@
       </Label>
       <ScrollBar layoutX="541.0" layoutY="94.0" orientation="VERTICAL" prefHeight="445.0" prefWidth="14.0" />
       <Button layoutX="14.0" layoutY="558.0" mnemonicParsing="false" onAction="#switchToMenu" text="Back to Menu" />
-      <Button fx:id="loginButton" layoutX="572.0" layoutY="470.0" mnemonicParsing="false" onAction="#switchToCustomerMainMenu" prefHeight="69.0" prefWidth="312.0" style="-fx-background-color: #FF5C00;" text="ORDER" textFill="WHITE">
+      <Button fx:id="loginButton" layoutX="572.0" layoutY="470.0" mnemonicParsing="false" onAction="#switchToConfirmationScreen" prefHeight="69.0" prefWidth="312.0" style="-fx-background-color: #FF5C00;" text="ORDER" textFill="WHITE">
          <font>
             <Font size="32.0" />
          </font>
@@ -53,5 +53,6 @@
             <Font size="16.0" />
          </font>
       </CheckBox>
+      <ListView fx:id="listView" layoutX="14.0" layoutY="94.0" prefHeight="445.0" prefWidth="526.0" />
    </children>
 </AnchorPane>

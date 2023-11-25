@@ -11,6 +11,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class orderController {
@@ -35,59 +36,165 @@ public class orderController {
     menuItems Soda = new menuItems(8);
 
     @FXML
-    private Button cheese;
+    private Button cheeseA;
 
     @FXML
-    private Button pepperoni;
+    private Button pepperoniA;
 
     @FXML
-    private Button meat;
+    private Button meatA;
 
     @FXML
-    private Button veggie;
+    private Button veggieA;
 
     @FXML
-    private Button deepDish;
+    private Button deepDishA;
 
     @FXML
-    private Button wings;
+    private Button wingsA;
 
     @FXML
-    private Button crazyBread;
+    private Button crazyBreadA;
 
     @FXML
-    private Button drink;
+    private Button drinkA;
+
+     @FXML
+    private Button cheeseR;
+
+    @FXML
+    private Button pepperoniR;
+
+    @FXML
+    private Button meatR;
+
+    @FXML
+    private Button veggieR;
+
+    @FXML
+    private Button deepDishR;
+
+    @FXML
+    private Button wingsR;
+
+    @FXML
+    private Button crazyBreadR;
+
+    @FXML
+    private Button drinkR;
+
+    @FXML
+    private Text cheeseCounter;
+
+    @FXML
+    private Text pepperoniCounter;
+
+    @FXML
+    private Text meatCounter;
+
+    @FXML
+    private Text veggieCounter;
+
+    @FXML
+    private Text deepDishCounter;
+
+    @FXML
+    private Text wingsCounter;
+
+    @FXML
+    private Text crazyBreadCounter;
+
+    @FXML
+    private Text sodaCounter;
 
     public void AddingToCart(ActionEvent event) {
         Button clickedButton = (Button) event.getSource(); 
         String buttonID = clickedButton.getId();
 
         switch (buttonID) {
-            case "cheese":
+            case "cheeseA":
                 orderList.addItemToCart(CheesePizza);
+                addCounter(cheeseCounter);
                 break;
-            case "pepperoni":
+            case "pepperoniA":
                 orderList.addItemToCart(PepperoniPizza);
+                addCounter(pepperoniCounter);
                 break;
-            case "meat":
+            case "meatA":
                 orderList.addItemToCart(ThreeMeatTreatPizza);
+                addCounter(meatCounter);
                 break;
-            case "veggie":
+            case "veggieA":
                 orderList.addItemToCart(VeggiePizza);
+                addCounter(veggieCounter);
                 break;
-            case "deepDish":
+            case "deepDishA":
                 orderList.addItemToCart(DeepDishPizza);
+                addCounter(deepDishCounter);
                 break;
-            case "wings":
+            case "wingsA":
                 orderList.addItemToCart(Wings);
+                addCounter(wingsCounter);
                 break;
-            case "crazyBread":
+            case "crazyBreadA":
                 orderList.addItemToCart(CrazyBread);
+                addCounter(crazyBreadCounter);
                 break;
-            case "drinks":
+            case "sodaA":
                 orderList.addItemToCart(Soda);
+                addCounter(sodaCounter);
                 break;
         }
+    }
+
+    private void addCounter(Text counterText) {
+        int currentCounter = Integer.parseInt(counterText.getText());
+        counterText.setText(String.valueOf(currentCounter + 1));
+    }
+
+    public void RemovingFromCart(ActionEvent event) {
+        Button clickedButton = (Button) event.getSource(); 
+        String buttonID = clickedButton.getId();
+
+        switch (buttonID) {
+            case "cheeseR":
+                orderList.removeItemFromCart(CheesePizza);
+                subtractCounter(cheeseCounter);
+                break;
+            case "pepperoniR":
+                orderList.removeItemFromCart(PepperoniPizza);
+                subtractCounter(pepperoniCounter);
+                break;
+            case "meatR":
+                orderList.removeItemFromCart(ThreeMeatTreatPizza);
+                subtractCounter(meatCounter);
+                break;
+            case "veggieR":
+                orderList.removeItemFromCart(VeggiePizza);
+                subtractCounter(veggieCounter);
+                break;
+            case "deepDishR":
+                orderList.removeItemFromCart(DeepDishPizza);
+                subtractCounter(deepDishCounter);
+                break;
+            case "wingsR":
+                orderList.removeItemFromCart(Wings);
+                subtractCounter(wingsCounter);
+                break;
+            case "crazyBreadR":
+                orderList.removeItemFromCart(CrazyBread);
+                subtractCounter(crazyBreadCounter);
+                break;
+            case "sodaR":
+                orderList.removeItemFromCart(Soda);
+                subtractCounter(sodaCounter);
+                break;
+        }
+    }
+
+    private void subtractCounter(Text counterText) {
+        int currentCounter = Integer.parseInt(counterText.getText());
+        counterText.setText(String.valueOf(currentCounter - 1));
     }
 
     public void switchToMenu(ActionEvent e) throws IOException {

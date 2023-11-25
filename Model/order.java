@@ -107,6 +107,11 @@ public class order{
         orderList.add(item);
     } //end addItemToCart
 
+    //method to remove a menu-item obejct from the order
+    public void removeItemFromCart(menuItems item) {
+        orderList.remove(item);
+    } //end removeItemFromCart
+
     //method to assign the order to a delivery object
     public void assignDelivery(delivery Delivery) {
         this.Delivery = Delivery;
