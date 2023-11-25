@@ -344,17 +344,8 @@ public class orderController {
 
     public void switchToCart(ActionEvent e) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("view/cartUI.fxml"));
-        stage = (Stage)((Node)e.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-        //display items just to check if the items were actually added to the cart
-        System.out.println("displaying Items Ordered");
-        orderList.displayItemsInCart();
-    }
-
-    public void switchToConfirmationScreen(ActionEvent e) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("view/confirmationScreenUI.fxml"));
+        cartController cartcontroller = new cartController();
+        cartcontroller.setOrderList(orderList);
         stage = (Stage)((Node)e.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
