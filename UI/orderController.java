@@ -13,12 +13,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
 public class orderController {
     static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/littlecaesars";
     static final String USER = "root";
@@ -26,15 +20,19 @@ public class orderController {
 
     private Stage stage;
     private Scene scene;
-    order orderList = new order(0, 0, 0, 0);
-    menuItems CheesePizza = new menuItems(0, DB_URL, 0);
-    menuItems PepperoniPizza = new menuItems(0, DB_URL, 0);
-    menuItems ThreeMeatTreatPizza = new menuItems(0, DB_URL, 0);
-    menuItems VeggiePizza = new menuItems(0, DB_URL, 0);
-    menuItems DeepDishPizza = new menuItems(0, DB_URL, 0);
-    menuItems Wings = new menuItems(0, DB_URL, 0);
-    menuItems CrazyBread = new menuItems(0, DB_URL, 0);
-    menuItems Soda = new menuItems(0, DB_URL, 0);
+    
+    globalController globalcontroller = globalController.instantiateGlobalController();
+
+    order orderList = globalcontroller.getOrder();
+    
+    menuItems CheesePizza = new menuItems(1);
+    menuItems PepperoniPizza = new menuItems(2);
+    menuItems ThreeMeatTreatPizza = new menuItems(3);
+    menuItems VeggiePizza = new menuItems(4);
+    menuItems DeepDishPizza = new menuItems(5);
+    menuItems Wings = new menuItems(6);
+    menuItems CrazyBread = new menuItems(7);
+    menuItems Soda = new menuItems(8);
 
     @FXML
     private Button cheese;
