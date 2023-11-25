@@ -13,19 +13,19 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: D9D9D9;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.customerController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="518.0" layoutX="74.0" layoutY="52.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="753.0" />
-      <PasswordField fx:id="passwordPasswordField" layoutX="122.0" layoutY="240.0" prefHeight="25.0" prefWidth="190.0" promptText="Enter Password" style="-fx-background-color: D9D9D9;" />
-      <TextField fx:id="usernameTextField" layoutX="122.0" layoutY="171.0" prefHeight="25.0" prefWidth="190.0" promptText="Enter Username" style="-fx-background-color: D9D9D9;" />
-      <Label layoutX="123.0" layoutY="140.0" text="Username">
+      <PasswordField fx:id="passwordPasswordField" layoutX="122.0" layoutY="322.0" prefHeight="25.0" prefWidth="190.0" promptText="Enter Password" style="-fx-background-color: D9D9D9;" />
+      <TextField fx:id="usernameTextField" layoutX="122.0" layoutY="255.0" prefHeight="25.0" prefWidth="190.0" promptText="Enter Username" style="-fx-background-color: D9D9D9;" />
+      <Label layoutX="120.0" layoutY="227.0" text="Username">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label layoutX="122.0" layoutY="216.0" text="Password">
+      <Label layoutX="122.0" layoutY="294.0" text="Password">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Button fx:id="loginButton" layoutX="669.0" layoutY="487.0" mnemonicParsing="false" onAction="#switchToCustomerMainMenuAfterCreateAccount" prefHeight="25.0" prefWidth="112.0" style="-fx-background-color: #FF5C00;" text="CONTINUE" textFill="WHITE">
+      <Button fx:id="continueButton" layoutX="669.0" layoutY="487.0" mnemonicParsing="false" onAction="#createAccount" prefHeight="25.0" prefWidth="112.0" style="-fx-background-color: #FF5C00;" text="CONTINUE" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>
@@ -36,48 +36,59 @@
             <Font size="31.0" />
          </font>
       </Label>
-      <Button layoutX="127.0" layoutY="492.0" mnemonicParsing="false" onAction="#switchToUserLogin" text="BACK TO LOGIN" />
+      <Button fx:id="backToLoginButton" layoutX="127.0" layoutY="492.0" mnemonicParsing="false" onAction="#switchToUserLogin" text="BACK TO LOGIN" />
       <Label fx:id="loginMessageLabel" layoutX="178.0" layoutY="171.0" textFill="RED">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <PasswordField fx:id="passwordPasswordField1" layoutX="122.0" layoutY="309.0" prefHeight="25.0" prefWidth="190.0" promptText="Confirm Password" style="-fx-background-color: D9D9D9;" />
-      <Label layoutX="121.0" layoutY="281.0" prefHeight="25.0" prefWidth="137.0" text="Confirm Password">
+      <PasswordField fx:id="passwordPasswordField1" layoutX="122.0" layoutY="395.0" prefHeight="25.0" prefWidth="190.0" promptText="Confirm Password" style="-fx-background-color: D9D9D9;" />
+      <Label layoutX="120.0" layoutY="364.0" prefHeight="25.0" prefWidth="137.0" text="Confirm Password">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <CheckBox layoutX="123.0" layoutY="432.0" mnemonicParsing="false" text="Accept Terms and Conditions" />
-      <TextField fx:id="usernameTextField1" layoutX="443.0" layoutY="171.0" prefHeight="25.0" prefWidth="190.0" promptText="Enter Name" style="-fx-background-color: D9D9D9;" />
-      <Label layoutX="443.0" layoutY="140.0" text="Name">
+      <CheckBox fx:id="acceptCheckBox" layoutX="123.0" layoutY="432.0" mnemonicParsing="false" text="Accept Terms and Conditions" />
+      <TextField fx:id="nameTextField" layoutX="444.0" layoutY="197.0" prefHeight="25.0" prefWidth="190.0" promptText="Enter Name" style="-fx-background-color: D9D9D9;" />
+      <Label layoutX="444.0" layoutY="166.0" text="Name">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label layoutX="442.0" layoutY="216.0" text="Delivery Address">
+      <Label layoutX="442.0" layoutY="227.0" text="Delivery Address">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="usernameTextField1" layoutX="442.0" layoutY="240.0" prefHeight="25.0" prefWidth="283.0" promptText="Enter Delivery Address" style="-fx-background-color: D9D9D9;" />
-      <Label layoutX="443.0" layoutY="281.0" text="Card Number">
+      <TextField fx:id="deliveryAddressTextField" layoutX="442.0" layoutY="255.0" prefHeight="25.0" prefWidth="283.0" promptText="Enter Delivery Address" style="-fx-background-color: D9D9D9;" />
+      <Label layoutX="443.0" layoutY="294.0" text="Card Number">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="usernameTextField11" layoutX="443.0" layoutY="309.0" prefHeight="25.0" prefWidth="283.0" promptText="0000 0000 0000 0000" style="-fx-background-color: D9D9D9;" />
-      <Label layoutX="442.0" layoutY="351.0" text="Exp. Date">
+      <TextField fx:id="cardNumberTextField" layoutX="442.0" layoutY="322.0" prefHeight="25.0" prefWidth="283.0" promptText="0000 0000 0000 0000" style="-fx-background-color: D9D9D9;" />
+      <Label layoutX="442.0" layoutY="364.0" text="Exp. Date">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="usernameTextField111" layoutX="442.0" layoutY="379.0" prefHeight="25.0" prefWidth="77.0" promptText="0000" style="-fx-background-color: D9D9D9;" />
-      <Label layoutX="569.0" layoutY="351.0" text="CVV">
+      <TextField fx:id="expDateTextField" layoutX="442.0" layoutY="395.0" prefHeight="25.0" prefWidth="77.0" promptText="0000" style="-fx-background-color: D9D9D9;" />
+      <Label layoutX="568.0" layoutY="364.0" text="CVV">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="usernameTextField1111" layoutX="569.0" layoutY="379.0" prefHeight="25.0" prefWidth="77.0" promptText="000" style="-fx-background-color: D9D9D9;" />
+      <TextField fx:id="cvvTextField" layoutX="569.0" layoutY="395.0" prefHeight="25.0" prefWidth="77.0" promptText="000" style="-fx-background-color: D9D9D9;" />
+      <Label layoutX="253.0" layoutY="130.0" textFill="RED">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="emailTextField" layoutX="123.0" layoutY="197.0" promptText="Enter Email Address" style="-fx-background-color: D9D9D9;" />
+      <Label layoutX="123.0" layoutY="166.0" text="Email">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
