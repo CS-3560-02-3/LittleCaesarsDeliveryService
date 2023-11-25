@@ -6,55 +6,46 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.orderController">
    <children>
-      <Button layoutX="75.0" layoutY="288.0" mnemonicParsing="false" onAction="#switchToCheesePizza" text="Click to View" />
-      <Button layoutX="270.0" layoutY="288.0" mnemonicParsing="false" onAction="#switchToPepperoniPizza" text="Click to View" />
-      <Button layoutX="492.0" layoutY="288.0" mnemonicParsing="false" onAction="#switchToThreeMeatPizza" text="Click to View" />
-      <Button layoutX="734.0" layoutY="288.0" mnemonicParsing="false" onAction="#switchToVeggiePizza" text="Click to View" />
-      <Button layoutX="734.0" layoutY="506.0" mnemonicParsing="false" onAction="#switchTo2LiterSoda" text="Click to View" />
-      <Button layoutX="492.0" layoutY="506.0" mnemonicParsing="false" onAction="#switchToCheesyBread" text="Click to View" />
-      <Button layoutX="270.0" layoutY="506.0" mnemonicParsing="false" onAction="#switchToWings" text="Click to View" />
-      <Button layoutX="75.0" layoutY="506.0" mnemonicParsing="false" onAction="#switchToDeepDish" text="Click to View" />
+      <Button layoutX="104.0" layoutY="289.0" mnemonicParsing="false" onAction="#switchToCheesePizza" text="Click to View" />
+      <Button layoutX="309.0" layoutY="289.0" mnemonicParsing="false" onAction="#switchToPepperoniPizza" text="Click to View" />
+      <Button layoutX="532.0" layoutY="289.0" mnemonicParsing="false" onAction="#switchToThreeMeatPizza" text="Click to View" />
+      <Button layoutX="753.0" layoutY="289.0" mnemonicParsing="false" onAction="#switchToVeggiePizza" text="Click to View" />
+      <Button layoutX="753.0" layoutY="507.0" mnemonicParsing="false" onAction="#switchTo2LiterSoda" text="Click to View" />
+      <Button layoutX="532.0" layoutY="507.0" mnemonicParsing="false" onAction="#switchToCheesyBread" text="Click to View" />
+      <Button layoutX="309.0" layoutY="507.0" mnemonicParsing="false" onAction="#switchToWings" text="Click to View" />
+      <Button layoutX="104.0" layoutY="507.0" mnemonicParsing="false" onAction="#switchToDeepDish" text="Click to View" />
       <Button layoutX="812.0" layoutY="35.0" mnemonicParsing="false" onAction="#switchToCart" text="CART" />
       <Label layoutX="37.0" layoutY="25.0" text="ORDER DELIVERY">
          <font>
             <Font size="48.0" />
          </font>
       </Label>
-      <Button fx:id="cheese" layoutX="167.0" layoutY="288.0" mnemonicParsing="false" text="+" />
-      <Button fx:id="deepDish" layoutX="167.0" layoutY="506.0" mnemonicParsing="false" text="+" />
-      <Button fx:id="wings" layoutX="360.0" layoutY="506.0" mnemonicParsing="false" text="+" />
-      <Button fx:id="crazyBread" layoutX="584.0" layoutY="506.0" mnemonicParsing="false" text="+" />
-      <Button fx:id="meat" layoutX="584.0" layoutY="288.0" mnemonicParsing="false" text="+" />
-      <Button fx:id="pepperoni" layoutX="360.0" layoutY="288.0" mnemonicParsing="false" text="+" />
-      <Button fx:id="veggie" layoutX="822.0" layoutY="288.0" mnemonicParsing="false" text="+" />
-      <Button fx:id="drink" layoutX="822.0" layoutY="506.0" mnemonicParsing="false" text="+" />
+      <Button fx:id="cheeseA" layoutX="196.0" layoutY="289.0" mnemonicParsing="false" onAction="#AddingToCart" text="+" />
+      <Button fx:id="deepDishA" layoutX="196.0" layoutY="507.0" mnemonicParsing="false" onAction="#AddingToCart" text="+" />
+      <Button fx:id="wingsA" layoutX="399.0" layoutY="507.0" mnemonicParsing="false" onAction="#AddingToCart" text="+" />
+      <Button fx:id="crazyBreadA" layoutX="624.0" layoutY="507.0" mnemonicParsing="false" onAction="#AddingToCart" text="+" />
+      <Button fx:id="meatA" layoutX="624.0" layoutY="289.0" mnemonicParsing="false" onAction="#AddingToCart" text="+" />
+      <Button fx:id="pepperoniA" layoutX="399.0" layoutY="289.0" mnemonicParsing="false" onAction="#AddingToCart" text="+" />
+      <Button fx:id="veggieA" layoutX="841.0" layoutY="289.0" mnemonicParsing="false" onAction="#AddingToCart" text="+" />
+      <Button fx:id="drinkA" layoutX="841.0" layoutY="507.0" mnemonicParsing="false" onAction="#AddingToCart" text="+" />
       <Button layoutX="675.0" layoutY="35.0" mnemonicParsing="false" onAction="#switchToMainMenu" text="Back to Main Menu" />
-      <ImageView fitHeight="135.0" fitWidth="229.0" layoutX="34.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../Pictures/cheesePizza.jpg" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="166.0" fitWidth="264.0" layoutX="225.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../Pictures/pepperoniPizzaGuy.jpg" />
-         </image>
-      </ImageView>
       <ImageView fitHeight="131.0" fitWidth="235.0" layoutX="468.0" layoutY="135.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../Pictures/threeMeatTreat.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="138.0" fitWidth="229.0" layoutX="677.0" layoutY="135.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="131.0" fitWidth="238.0" layoutX="235.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../Pictures/veggiePizza.jpg" />
+            <Image url="@../../Pictures/pepperoniPizzaGuy.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="131.0" fitWidth="229.0" layoutX="34.0" layoutY="361.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="138.0" fitWidth="229.0" layoutX="677.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../Pictures/deepDish.jpg" />
+            <Image url="@../../Pictures/veggiePizza.jpg" />
          </image>
       </ImageView>
       <ImageView fitHeight="139.0" fitWidth="229.0" layoutX="239.0" layoutY="360.0" pickOnBounds="true" preserveRatio="true">
@@ -72,5 +63,63 @@
             <Image url="@../../Pictures/twoLiter.jpg" />
          </image>
       </ImageView>
+      <Button fx:id="cheeseR" layoutX="76.0" layoutY="289.0" mnemonicParsing="false" onAction="#RemovingFromCart" text="-" />
+      <Button fx:id="deepDishR" layoutX="76.0" layoutY="507.0" mnemonicParsing="false" onAction="#RemovingFromCart" text="-" />
+      <Button fx:id="pepperoniR" layoutX="283.0" layoutY="289.0" mnemonicParsing="false" onAction="#RemovingFromCart" text="-" />
+      <Button fx:id="wingsR" layoutX="283.0" layoutY="507.0" mnemonicParsing="false" onAction="#RemovingFromCart" text="-" />
+      <Button fx:id="meatR" layoutX="500.0" layoutY="289.0" mnemonicParsing="false" onAction="#RemovingFromCart" text="-" />
+      <Button fx:id="crazyBreadR" layoutX="500.0" layoutY="507.0" mnemonicParsing="false" onAction="#RemovingFromCart" text="-" />
+      <Button fx:id="veggieR" layoutX="724.0" layoutY="289.0" mnemonicParsing="false" onAction="#RemovingFromCart" text="-" />
+      <Button fx:id="sodaR" layoutX="724.0" layoutY="507.0" mnemonicParsing="false" onAction="#RemovingFromCart" text="-" />
+      <ImageView fitHeight="135.0" fitWidth="229.0" layoutX="34.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Pictures/cheesePizza.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="131.0" fitWidth="229.0" layoutX="34.0" layoutY="361.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Pictures/deepDish.jpg" />
+         </image>
+      </ImageView>
+      <Text fx:id="cheeseCounter" layoutX="128.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text fx:id="deepDishCounter" layoutX="133.0" layoutY="354.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text fx:id="pepperoniCounter" layoutX="354.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text fx:id="wingsCounter" layoutX="359.0" layoutY="354.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text fx:id="meatCounter" layoutX="566.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text fx:id="crazyBreadCounter" layoutX="571.0" layoutY="354.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text fx:id="veggieCounter" layoutX="784.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text fx:id="sodaCounter" layoutX="789.0" layoutY="354.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>
