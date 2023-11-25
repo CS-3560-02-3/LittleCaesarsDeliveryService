@@ -18,12 +18,12 @@ public class customer {
     private String name;
     private String deliveryAddress;
     private String emailAddress;
-    private int cardNumber;
-    private int cardDate;
-    private int cardCVV;
+    private String cardNumber;
+    private String cardDate;
+    private String cardCVV;
 
     //Constructor that creates the customer class
-    public customer(int customerID, String username, String password, String name, String deliveryAddress, String emailAddress, int cardNumber, int cardDate, int cardCVV) {
+    public customer(int customerID, String username, String password, String name, String deliveryAddress, String emailAddress, String cardNumber, String cardDate, String cardCVV) {
         this.customerID = customerID;
         this.name = name;
         this.username = username;
@@ -57,9 +57,9 @@ public class customer {
             password = resultSet.getString("password");
             deliveryAddress = resultSet.getString("deliveryAddress");
             emailAddress = resultSet.getString("emailAddress");
-            cardNumber = resultSet.getInt("cardNumber");
-            cardDate = resultSet.getInt("cardDate");
-            cardCVV = resultSet.getInt("cardCVV");
+            cardNumber = resultSet.getString("cardNumber");
+            cardDate = resultSet.getString("cardDate");
+            cardCVV = resultSet.getString("cardCVV");
         }
         catch (SQLException e) {
             e.printStackTrace();
@@ -123,17 +123,17 @@ public class customer {
     }
 
     //method to get the customer's card number
-    public int getCardNumber() {
+    public String getCardNumber() {
         return cardNumber;
     }
 
     //method to get the customer's card expiration date
-    public int getCardDate() {
+    public String getCardDate() {
         return cardDate;
     }
 
     //method to get the customer's card's CVV
-    public int getCardCVV() {
+    public String getCardCVV() {
         return cardCVV;
     }
 
@@ -148,17 +148,17 @@ public class customer {
     }
 
     //method to update the customer's card number
-    public void updateCardNumber(int newCardNumber) {
+    public void updateCardNumber(String newCardNumber) {
         cardNumber = newCardNumber;
     }
 
     //method to update the customer's card expiration date
-    public void updateCardDate(int newCardDate) {
+    public void updateCardDate(String newCardDate) {
         cardDate = newCardDate;
     }
 
     //method to update the customer's card's CVV
-    public void updateCardCVV(int newCardCVV) {
+    public void updateCardCVV(String newCardCVV) {
         cardCVV = newCardCVV;
     }
 } //end customer
