@@ -2,7 +2,7 @@ package UI;
 import Model.order;
 
 public class globalController {
-    private globalController globalcontroller;
+    private static globalController globalcontroller;
     private order Order;
     private boolean loggedIn;
 
@@ -13,7 +13,7 @@ public class globalController {
     }
 
     //make sure that there is only one instantiation at a time. Ensures only one user can use the application at a time.
-    public globalController instantiateGlobalController() {
+    public static globalController instantiateGlobalController() {
         if (globalcontroller == null)
             globalcontroller = new globalController();
         return globalcontroller;
