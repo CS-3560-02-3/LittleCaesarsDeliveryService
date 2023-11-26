@@ -6,7 +6,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
+import Model.customer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -38,6 +40,8 @@ public class customerController {
 
     @FXML
     private Label loginMessageLabel;
+
+    public static customer Customer;
 
     @FXML
     private void switchToUserLogin(ActionEvent e) throws IOException {
@@ -107,10 +111,32 @@ public class customerController {
                     if(retrievedPassword.equals(password)) {
 
                         setLoggedInStatus(true);
+
+                        preparedStatement = connection.prepareStatement("SELECT customerID FROM customer WHERE username = ?");
+                        preparedStatement.setString(1, username);
                         
+                        ResultSet rs = preparedStatement.executeQuery();
+                        int customerID = 0;
+
+                        if(rs.next()) {
+                            customerID = rs.getInt("customerID");
+                        }
+
+                        System.out.println(customerID);
+
+                        customer testCustomer = new customer(customerID);
+
+                        
+                        
+                        // globalController.setCustomer(Customer);
+
+                        // customer testCustomer = globalController.getCustomer();
+                        // String testCVV = testCustomer.getCardCVV();
+                        // System.out.println(testCVV);
                         
                         // changeScene
-                        Parent root = FXMLLoader.load(getClass().getResource("view/menu.fxml"));
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("view/menu.fxml"));
+                        Parent root = loader.load();
                         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
                         scene = new Scene(root);
                         stage.setScene(scene);

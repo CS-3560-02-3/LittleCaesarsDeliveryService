@@ -19,6 +19,7 @@ public class itemMenuController {
         this.loggedIn = loggedIn;
     }
 
+
     public void switchToMenu(ActionEvent e) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("view/itemMenuViewUI.fxml"));
         stage = (Stage)((Node)e.getSource()).getScene().getWindow();
@@ -107,5 +108,9 @@ public class itemMenuController {
             stage.setScene(scene);
             stage.show();
         }
+    }
+
+    public void setLoggedInStatus(boolean status) {
+        loggedIn = status;
     }
 }
