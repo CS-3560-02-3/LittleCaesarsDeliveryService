@@ -7,7 +7,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: D9D9D9;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.employeeOrderController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: D9D9D9;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.checkboxController">
    <children>
       <Label layoutX="42.0" layoutY="43.0" text="ORDERS" textFill="#ff5c00">
          <font>
@@ -23,90 +23,90 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="168.0" layoutX="255.0" layoutY="385.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="168.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="168.0" layoutX="467.0" layoutY="385.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="168.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="168.0" layoutX="679.0" layoutY="385.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="168.0" />
-      <CheckBox layoutX="186.0" layoutY="318.0" mnemonicParsing="false" />
-      <CheckBox layoutX="396.0" layoutY="318.0" mnemonicParsing="false" />
-      <CheckBox layoutX="608.0" layoutY="318.0" mnemonicParsing="false" />
-      <CheckBox layoutX="186.0" layoutY="526.0" mnemonicParsing="false" />
-      <CheckBox layoutX="396.0" layoutY="526.0" mnemonicParsing="false" />
-      <CheckBox layoutX="608.0" layoutY="526.0" mnemonicParsing="false" />
-      <CheckBox layoutX="822.0" layoutY="318.0" mnemonicParsing="false" />
-      <CheckBox layoutX="822.0" layoutY="526.0" mnemonicParsing="false" />
-      <Label layoutX="53.0" layoutY="186.0" text="DRIVER:" textFill="#ff5c00">
+      <CheckBox id="checkone" fx:id="checkone" layoutX="186.0" layoutY="318.0" mnemonicParsing="false" onAction="#delete" />
+      <CheckBox id="checktwo" fx:id="checktwo" layoutX="396.0" layoutY="318.0" mnemonicParsing="false" onAction="#delete" />
+      <CheckBox id="checkthree" fx:id="checkthree" layoutX="608.0" layoutY="318.0" mnemonicParsing="false" onAction="#delete" />
+      <CheckBox id="checkfour" fx:id="checkfive" layoutX="186.0" layoutY="526.0" mnemonicParsing="false" onAction="#delete" />
+      <CheckBox id="checkfive" fx:id="checksix" layoutX="396.0" layoutY="526.0" mnemonicParsing="false" onAction="#delete" />
+      <CheckBox id="checksix" fx:id="checkseven" layoutX="608.0" layoutY="526.0" mnemonicParsing="false" onAction="#delete" />
+      <CheckBox id="checkseven" fx:id="checkfour" layoutX="822.0" layoutY="318.0" mnemonicParsing="false" onAction="#delete" />
+      <CheckBox id="checkeight" fx:id="checkeight" layoutX="822.0" layoutY="526.0" mnemonicParsing="false" onAction="#delete" />
+      <Label id="driverone" fx:id="driverone" layoutX="53.0" layoutY="186.0" text="DRIVER:" textFill="#ff5c00">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="267.0" layoutY="186.0" text="DRIVER:" textFill="#ff5c00">
+      <Label id="drivertwo" fx:id="drivertwo" layoutX="267.0" layoutY="186.0" text="DRIVER:" textFill="#ff5c00">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="53.0" layoutY="399.0" text="DRIVER:" textFill="#ff5c00">
+      <Label id="driverthree" fx:id="driverfive" layoutX="53.0" layoutY="399.0" text="DRIVER:" textFill="#ff5c00">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="476.0" layoutY="186.0" text="DRIVER:" textFill="#ff5c00">
+      <Label id="driverfour" fx:id="driverthree" layoutX="476.0" layoutY="186.0" text="DRIVER:" textFill="#ff5c00">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="267.0" layoutY="399.0" text="DRIVER:" textFill="#ff5c00">
+      <Label id="driverfive" fx:id="driversix" layoutX="267.0" layoutY="399.0" text="DRIVER:" textFill="#ff5c00">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="480.0" layoutY="399.0" text="DRIVER:" textFill="#ff5c00">
+      <Label id="driversix" fx:id="driverseven" layoutX="480.0" layoutY="399.0" text="DRIVER:" textFill="#ff5c00">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="693.0" layoutY="186.0" text="DRIVER:" textFill="#ff5c00">
+      <Label id="driverseven" fx:id="driverfour" layoutX="693.0" layoutY="186.0" text="DRIVER:" textFill="#ff5c00">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="693.0" layoutY="399.0" text="DRIVER:" textFill="#ff5c00">
+      <Label id="drivereight" fx:id="drivereight" layoutX="693.0" layoutY="399.0" text="DRIVER:" textFill="#ff5c00">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="53.0" layoutY="260.0" text="ORDER #" textFill="#ff5c00">
+      <Label id="orderone" fx:id="orderone" layoutX="53.0" layoutY="260.0" text="ORDER #" textFill="#ff5c00">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="53.0" layoutY="469.0" text="ORDER #" textFill="#ff5c00">
+      <Label id="ordertwo" fx:id="orderfive" layoutX="53.0" layoutY="469.0" text="ORDER #" textFill="#ff5c00">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="267.0" layoutY="260.0" text="ORDER #" textFill="#ff5c00">
+      <Label id="orderthree" fx:id="ordertwo" layoutX="267.0" layoutY="260.0" text="ORDER #" textFill="#ff5c00">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="267.0" layoutY="469.0" text="ORDER #" textFill="#ff5c00">
+      <Label id="orderfour" fx:id="ordersix" layoutX="267.0" layoutY="469.0" text="ORDER #" textFill="#ff5c00">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="476.0" layoutY="260.0" text="ORDER #" textFill="#ff5c00">
+      <Label id="orderfive" fx:id="orderthree" layoutX="476.0" layoutY="260.0" text="ORDER #" textFill="#ff5c00">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="476.0" layoutY="469.0" text="ORDER #" textFill="#ff5c00">
+      <Label id="ordersix" fx:id="orderseven" layoutX="476.0" layoutY="469.0" text="ORDER #" textFill="#ff5c00">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="692.0" layoutY="260.0" text="ORDER #" textFill="#ff5c00">
+      <Label id="orderseven" fx:id="orderfour" layoutX="692.0" layoutY="260.0" text="ORDER #" textFill="#ff5c00">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="692.0" layoutY="469.0" text="ORDER #" textFill="#ff5c00">
+      <Label id="ordereight" fx:id="ordereight" layoutX="692.0" layoutY="469.0" text="ORDER #" textFill="#ff5c00">
          <font>
             <Font size="18.0" />
          </font>
