@@ -55,14 +55,14 @@ public class menuController {
 
         // FXMLLoader temp = new FXMLLoader(getClass().getResource("view/customerLoginViewUI.fxml"));
 
-        System.out.println(customerID);
+        // System.out.println(customerID);
         // customerController CustomerController = temp.getController();
         // int customerID = CustomerController.getCustomerID();
 
-        int temp = customerID;
+        
 
-        editAccountController EditAccountController = loader.getController();
-        EditAccountController.setCustomerID(temp);
+        // editAccountController EditAccountController = loader.getController();
+        // EditAccountController.setCustomerID(temp);
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);

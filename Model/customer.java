@@ -53,14 +53,17 @@ public class customer {
             preparedStatement.setInt(1, customerID);
             resultSet = preparedStatement.executeQuery();
 
-            name = resultSet.getString("name");
-            username = resultSet.getString("username");
-            password = resultSet.getString("password");
-            deliveryAddress = resultSet.getString("deliveryAddress");
-            emailAddress = resultSet.getString("emailAddress");
-            cardNumber = resultSet.getString("cardNumber");
-            cardDate = resultSet.getString("cardDate");
-            cardCVV = resultSet.getString("cardCVV");
+            while(resultSet.next()) {
+                name = resultSet.getString("name");
+                username = resultSet.getString("username");
+                password = resultSet.getString("password");
+                deliveryAddress = resultSet.getString("deliveryAddress");
+                emailAddress = resultSet.getString("emailAddress");
+                cardNumber = resultSet.getString("cardNumber");
+                cardDate = resultSet.getString("expDate");
+                cardCVV = resultSet.getString("cvv");
+            }
+        
         }
         catch (SQLException e) {
             e.printStackTrace();
@@ -114,7 +117,7 @@ public class customer {
     }
 
     //method to get the customer's delivery address
-    public String getdeliveryAddress() {
+    public String getDeliveryAddress() {
         return deliveryAddress;
     }
 
