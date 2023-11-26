@@ -43,6 +43,9 @@ public class customerController {
 
     public static customer Customer;
 
+    // public int customerID;
+
+
     @FXML
     private void switchToUserLogin(ActionEvent e) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("view/customerLoginViewUI.fxml"));
@@ -124,7 +127,7 @@ public class customerController {
 
                         System.out.println(customerID);
 
-                        customer testCustomer = new customer(customerID);
+                        // Customer = new customer(customerID);
 
                         
                         
@@ -137,6 +140,10 @@ public class customerController {
                         // changeScene
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("view/menu.fxml"));
                         Parent root = loader.load();
+
+                        menuController MenuController = loader.getController();
+                        MenuController.setCustomerID(customerID);
+
                         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
                         scene = new Scene(root);
                         stage.setScene(scene);
@@ -187,6 +194,8 @@ public class customerController {
     public boolean getLoggedInStatus() {
         return loggedIn;
     }
+
+    
 
     public void switchToCustomerMainMenuAfterCreateAccount(ActionEvent event) throws IOException{
         Parent root = FXMLLoader.load(getClass().getResource("view/menu.fxml"));
