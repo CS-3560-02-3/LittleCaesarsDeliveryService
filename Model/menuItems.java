@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Objects;
 
 public class menuItems {
     static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/littlecaesars";
@@ -83,5 +84,20 @@ public class menuItems {
     //method to get item price
     public double getPrice() {
         return itemPrice;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (this == object)
+            return true;
+        if (object == null || getClass() != object.getClass())
+            return false;
+        menuItems item = (menuItems) object;
+        return Objects.equals(getName(), item.getName());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getName());
     }
 }
