@@ -11,7 +11,7 @@ public class order {
     //JDBC connection
     static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/littlecaesars";
     static final String USER = "root";
-    static final String PASSWORD = "littleCaesars";
+    static final String PASSWORD = "ilovemysql23";
 
     //attributes
     private int orderID;

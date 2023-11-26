@@ -38,6 +38,8 @@ public class mainMenuController {
     @FXML
     private Label loginMessageLabel;
 
+    private boolean loggedIn = false;
+
     @FXML
     private void initialize() {
         hoverContent.setVisible(false);
@@ -86,7 +88,18 @@ public class mainMenuController {
 
     @FXML
     private void switchToItemMenu(ActionEvent e) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("view/itemMenuViewUI.fxml"));
+        
+        // Parent root = FXMLLoader.load(getClass().getResource("view/itemMenuViewUI.fxml"));
+        // stage = (Stage)((Node)e.getSource()).getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("view/itemMenuViewUI.fxml"));
+        Parent root = loader.load();
+
+        // cartController cartcontroller = loader.getController();
+        // cartcontroller.setOrderList();
+
+        itemMenuController ItemMenuController = loader.getController();
+        ItemMenuController.setLoggedInStatus(loggedIn);
+
         stage = (Stage)((Node)e.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

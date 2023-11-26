@@ -22,6 +22,8 @@ public class menuController {
     @FXML
     private Button login;
 
+    private boolean loggedIn = true;
+
     @FXML
     private void initialize() {
         if (hoverContent != null)
@@ -75,7 +77,16 @@ public class menuController {
     }
 
     public void itemMenu(ActionEvent event) throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("view/itemMenuViewUI.fxml"));
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("view/itemMenuViewUI.fxml"));
+        Parent root = loader.load();
+
+        itemMenuController ItemMenuController = loader.getController();
+        ItemMenuController.setLoggedInStatus(loggedIn);
+
+        // Parent root = FXMLLoader.load(getClass().getResource("view/itemMenuViewUI.fxml"));
+        // stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
