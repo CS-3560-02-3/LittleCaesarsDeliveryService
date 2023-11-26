@@ -17,8 +17,7 @@ public class menuController {
     private Stage stage;
     private Scene scene;
     private boolean loggedIn = true;
-    private customer Customer;
-
+    private int customerID;
     @FXML
     private StackPane hoverContent;
 
@@ -49,7 +48,21 @@ public class menuController {
     }
 
     public void switchToEdit(ActionEvent event) throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("view/menuEdit.fxml"));
+        // Parent root = FXMLLoader.load(getClass().getResource("view/menuEdit.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("view/menuEdit.fxml"));
+        Parent root = loader.load();
+
+        // FXMLLoader temp = new FXMLLoader(getClass().getResource("view/customerLoginViewUI.fxml"));
+
+        System.out.println(customerID);
+        // customerController CustomerController = temp.getController();
+        // int customerID = CustomerController.getCustomerID();
+
+        int temp = customerID;
+
+        editAccountController EditAccountController = loader.getController();
+        EditAccountController.setCustomerID(temp);
+
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -97,5 +110,13 @@ public class menuController {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void setCustomerID(int customerID) {
+        this.customerID = customerID;
+    }
+
+    public int getCustomerID() {
+        return this.customerID;
     }
 }
