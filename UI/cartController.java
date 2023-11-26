@@ -21,7 +21,19 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 public class cartController {
+    //JDBC connection
+    static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/littlecaesars";
+    static final String USER = "root";
+    static final String PASSWORD = "littleCaesars";
+    //static final String PASSWORD = "ilovemysql23";
+
     private Stage stage;
     private Scene scene;
     private globalController globalcontroller;
@@ -147,6 +159,51 @@ public class cartController {
 
     public void switchToConfirmationScreen(ActionEvent e) throws IOException {
         orderList.setTip(tip);
+        
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = DriverManager.getConnection(DB_URL, USER, PASSWORD);
+            preparedStatement = connection.prepareStatement("INSERT INTO `order` (orderID, dateOrdered, tip, customerID) VALUES (?, ?, ?, ?);");
+            preparedStatement.setInt(1, orderList.getOrderID());
+            preparedStatement.setInt(2, orderList.getDateOrdered());
+            preparedStatement.setDouble(3, orderList.getTip());
+            //Im about to end it all rn
+            preparedStatement.setInt(4, customer.getCustomerID());
+        }
+        catch (Exception error) {
+            error.printStackTrace();
+        }
+        finally {
+            if (resultSet != null) {
+                try {
+                    resultSet.close();
+                } 
+                catch (SQLException error) {
+                    error.printStackTrace();
+                }
+            }
+            if (preparedStatement != null) {
+                try {
+                    preparedStatement.close();
+                }
+                catch (SQLException error) {
+                    error.printStackTrace();
+                }
+            }
+            if (connection != null) {
+                try {
+                    connection.close();
+                }
+                catch (SQLException error) {
+                    error.printStackTrace();
+                }
+            }
+        }
+
+
         Parent root = FXMLLoader.load(getClass().getResource("view/confirmationScreenUI.fxml"));
         stage = (Stage)((Node)e.getSource()).getScene().getWindow();
         scene = new Scene(root);
