@@ -40,9 +40,9 @@ public class employeeOrderController {
     @FXML
     private Label loginMessageLabel;
 
-    public void switchToEmployeeLoginScene(ActionEvent event) throws IOException {
+    public void signOut(ActionEvent event) throws IOException {
 
-        Parent root = FXMLLoader.load(getClass().getResource("view/employeeLoginViewUI.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("view/mainMenu.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

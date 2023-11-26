@@ -1,10 +1,12 @@
 package UI;
 import Model.order;
+import Model.customer;
 
 public class globalController {
     private static globalController globalcontroller;
     private order Order;
     private boolean loggedIn;
+    private static customer Customer;
 
     //private constructor to prevent instantiation of the object from the outside. This helps create only one instance of the object at a time.
     private globalController() {
@@ -32,5 +34,13 @@ public class globalController {
     //method to return the order that is associated with the customer.
     public order getOrder() {
         return Order;
+    }
+
+    public static void setCustomer(customer Customer) {
+        globalController.Customer = Customer;
+    }
+
+    public static customer getCustomer() {
+        return globalController.Customer;
     }
 }
