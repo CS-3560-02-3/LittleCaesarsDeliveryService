@@ -12,6 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -23,7 +24,9 @@ import javafx.stage.Stage;
 public class cartController {
     private Stage stage;
     private Scene scene;
+    private globalController globalcontroller;
     private order orderList;
+    private int tip;
 
     @FXML
     private ScrollPane scrollPane;
@@ -40,9 +43,27 @@ public class cartController {
     @FXML
     private Text AddressText;
 
-    public void setOrderList(order orderList) {
-        this.orderList = orderList;
-        orderList.displayItemsInCart();
+    @FXML
+    private RadioButton tip1;
+
+    @FXML
+    private RadioButton tip2;
+
+    @FXML
+    private RadioButton tip3;
+    
+    @FXML
+    private RadioButton tip0;
+    
+
+    public void setGlobalController(globalController globalcontroller) {
+        this.globalcontroller = globalcontroller;
+        setOrderList();
+    }
+    
+    public void setOrderList() {
+        this.orderList = globalcontroller.getCurrentOrder(); 
+        displayItemsToScreen();
         displayTotalCost();
     }
 
@@ -112,7 +133,20 @@ public class cartController {
         CostText.setText("TOTAL COST: $" + String.valueOf(orderList.getTotalCost()));
     }
 
+    @FXML
+    public void addTip() {
+        if (tip1.isSelected())
+            tip = 1;
+        else if (tip2.isSelected())
+            tip = 2;
+        else if (tip3.isSelected())
+            tip = 3;
+        else if (tip0.isSelected())
+            tip = 0;
+    } 
+
     public void switchToConfirmationScreen(ActionEvent e) throws IOException {
+        orderList.setTip(tip);
         Parent root = FXMLLoader.load(getClass().getResource("view/confirmationScreenUI.fxml"));
         stage = (Stage)((Node)e.getSource()).getScene().getWindow();
         scene = new Scene(root);

@@ -1,4 +1,5 @@
 package UI;
+import Model.customer;
 import Model.menuItems;
 import Model.order;
 
@@ -26,16 +27,18 @@ public class orderController {
     //JDBC connection
     static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/littlecaesars";
     static final String USER = "root";
-    static final String PASSWORD = "ilovemysql23";
+    static final String PASSWORD = "littleCaesars";
+    //static final String PASSWORD = "ilovemysql23";
 
     //Stage and Scene declaration
     private Stage stage;
     private Scene scene;
+    private customer Customer;
     
     //Calling the global Controller in order to instantiate a globalController Object
     globalController globalcontroller = globalController.instantiateGlobalController();
     //Using the globalController Object in order to instantiate the customer's orderList
-    order orderList = globalcontroller.getOrder();
+    order orderList = globalcontroller.getCurrentOrder();
     //assigning the orderlist to the customer
     
     //initialize menu item objects
@@ -147,6 +150,57 @@ public class orderController {
 
     //initializer method in order to set the counters to their right values
     public void initialize() {
+        /* Connection connection = null;
+        Statement statement = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = DriverManager.getConnection(DB_URL, USER, PASSWORD);
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery("SELECT orderID FROM `order` WHERE orderID = (SELECT MAX(orderID) FROM `order`)");
+            
+
+            if (resultSet.next()) {
+                int orderID = resultSet.getInt("orderID") + 1;
+                orderList = new order(orderID, 1127, 0, 0);
+            }
+            else {
+                System.out.println("No Order ID found in Database");
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        finally {
+            if (resultSet != null) {
+                try {
+                    resultSet.close();
+                } 
+                catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (statement != null) {
+                try {
+                    statement.close();
+                }
+                catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (connection != null) {
+                try {
+                    connection.close();
+                }
+                catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        //assigning the orderlist to the customer
+        if (orderList != null)
+            orderList.assignCustomer(Customer); */
+
         if (cheeseCounter != null)
             cheeseCounter.setText(String.valueOf(orderList.getCounterValue(CheesePizza)));
         if (pepperoniCounter != null)
@@ -163,6 +217,10 @@ public class orderController {
             crazyBreadCounter.setText(String.valueOf(orderList.getCounterValue(CrazyBread)));
         if (sodaCounter != null)
             sodaCounter.setText(String.valueOf(orderList.getCounterValue(Soda)));
+    }
+
+    public void setCustomer(customer Customer) {
+        this.Customer = Customer;
     }
 
     //method to add an item to the cart
@@ -355,7 +413,7 @@ public class orderController {
         Parent root = loader.load();
 
         cartController cartcontroller = loader.getController();
-        cartcontroller.setOrderList(orderList);
+        cartcontroller.setGlobalController(globalcontroller);
         
         stage = (Stage)((Node)e.getSource()).getScene().getWindow();
         scene = new Scene(root);
