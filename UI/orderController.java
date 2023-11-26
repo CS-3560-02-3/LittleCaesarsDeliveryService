@@ -343,9 +343,12 @@ public class orderController {
     }
 
     public void switchToCart(ActionEvent e) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("view/cartUI.fxml"));
-        cartController cartcontroller = new cartController();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("view/cartUI.fxml"));
+        Parent root = loader.load();
+
+        cartController cartcontroller = loader.getController();
         cartcontroller.setOrderList(orderList);
+        
         stage = (Stage)((Node)e.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

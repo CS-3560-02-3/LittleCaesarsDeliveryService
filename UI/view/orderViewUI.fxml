@@ -121,5 +121,45 @@
             <Font size="20.0" />
          </font>
       </Text>
+      <Text layoutX="34.0" layoutY="271.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$5" wrappingWidth="25.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="34.0" layoutY="499.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$7" wrappingWidth="25.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="259.0" layoutY="274.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$6" wrappingWidth="25.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="271.0" layoutY="501.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$7" wrappingWidth="25.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="475.0" layoutY="273.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$8" wrappingWidth="25.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="475.0" layoutY="501.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$3" wrappingWidth="25.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="685.0" layoutY="271.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$5" wrappingWidth="25.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="685.0" layoutY="499.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$2" wrappingWidth="25.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>
