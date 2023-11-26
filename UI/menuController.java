@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 public class menuController {
     private Stage stage;
     private Scene scene;
+    private boolean loggedIn = true;
 
     @FXML
     private StackPane hoverContent;
@@ -77,16 +78,12 @@ public class menuController {
     }
 
     public void itemMenu(ActionEvent event) throws IOException{
-
         FXMLLoader loader = new FXMLLoader(getClass().getResource("view/itemMenuViewUI.fxml"));
         Parent root = loader.load();
 
-        itemMenuController ItemMenuController = loader.getController();
-        ItemMenuController.setLoggedInStatus(loggedIn);
-
-        // Parent root = FXMLLoader.load(getClass().getResource("view/itemMenuViewUI.fxml"));
-        // stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-
+        itemMenuController Item = loader.getController();
+        Item.setLoggedInStatus(loggedIn);
+        
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

@@ -146,13 +146,11 @@ public class order {
     //method to add an menu-item object to the order 
     public void addItemToCart(menuItems item) {
         orderList.add(item);
-        System.out.println(item.getName() + " has been added");
     } //end addItemToCart
     
     //method to remove a menu-item obejct from the order
     public void removeItemFromCart(menuItems item) {
         orderList.remove(item);
-        System.out.println(item.getName() + " has been removed");
     } //end removeItemFromCart
     
     //method to update the orderlist when a new item is added or a previous item is removed
