@@ -132,9 +132,14 @@ public class order {
     }
 
     //method to calculate the total cost of the item
-    public void calculateTotalCost(orderItem OrderItem) {
+    public void calculateTotalCost() {
+        ArrayList<menuItems> duplicates = new ArrayList<>();
+        totalCost = 0;
         for (menuItems item : orderList) {
-            totalCost += OrderItem.calculateItemCost(item);
+            if (!duplicates.contains(item)) {
+                totalCost += item.getPrice() * getCounterValue(item);
+                duplicates.add(item);
+            }
         }
     } //end calculateTotalCost
     
