@@ -18,6 +18,7 @@ public class menuController {
     private Scene scene;
     private boolean loggedIn = true;
     private int customerID;
+    private customer Customer;
     @FXML
     private StackPane hoverContent;
 
