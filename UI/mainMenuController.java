@@ -19,6 +19,7 @@ import javafx.scene.control.Label;
 public class mainMenuController {
     private Stage stage;
     private Scene scene;
+    private boolean loggedIn = false;
 
     @FXML
     private StackPane hoverContent;
@@ -86,7 +87,12 @@ public class mainMenuController {
 
     @FXML
     private void switchToItemMenu(ActionEvent e) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("view/itemMenuViewUI.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("view/itemMenuViewUI.fxml"));
+        Parent root = loader.load();
+
+        itemMenuController Item = loader.getController();
+        Item.setLoggedInStatus(loggedIn);
+
         stage = (Stage)((Node)e.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

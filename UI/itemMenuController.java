@@ -13,6 +13,11 @@ public class itemMenuController {
     private Stage stage;
     private Scene scene;
     private globalController globalcontroller;
+    private boolean loggedIn;
+
+    public void setLoggedInStatus(boolean loggedIn) {
+        this.loggedIn = loggedIn;
+    }
 
     public void switchToMenu(ActionEvent e) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("view/itemMenuViewUI.fxml"));
@@ -88,7 +93,7 @@ public class itemMenuController {
 
     //need to fix this with a global boolean but if i can't find a solution, I'm creating 9 new fxml files that are the exact same thing
     public void switchToMainMenu(ActionEvent e) throws IOException {
-        if (globalcontroller.isLoggedIn()) {
+        if (!loggedIn) {
             Parent root = FXMLLoader.load(getClass().getResource("view/mainMenu.fxml"));
             stage = (Stage)((Node)e.getSource()).getScene().getWindow();
             scene = new Scene(root);

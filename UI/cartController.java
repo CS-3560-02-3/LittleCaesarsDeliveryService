@@ -43,7 +43,6 @@ public class cartController {
     public void setOrderList(order orderList) {
         this.orderList = orderList;
         orderList.displayItemsInCart();
-        displayItemsToScreen();
         displayTotalCost();
     }
 
