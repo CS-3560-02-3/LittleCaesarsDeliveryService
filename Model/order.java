@@ -1,7 +1,7 @@
 package Model;
 
 import java.util.ArrayList;
-
+import java.util.Objects;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -146,11 +146,13 @@ public class order {
     //method to add an menu-item object to the order 
     public void addItemToCart(menuItems item) {
         orderList.add(item);
+        System.out.println(item.getName() + " has been added");
     } //end addItemToCart
     
     //method to remove a menu-item obejct from the order
     public void removeItemFromCart(menuItems item) {
         orderList.remove(item);
+        System.out.println(item.getName() + " has been removed");
     } //end removeItemFromCart
     
     //method to update the orderlist when a new item is added or a previous item is removed
@@ -217,6 +219,7 @@ public class order {
         for (int i = 0; i < orderList.size(); i++) {
             System.out.println(orderList.get(i).getName());
         }
+        System.out.println();
     } //end displayItemsInCart
 
     //method to assign the order to a delivery object

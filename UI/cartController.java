@@ -42,11 +42,13 @@ public class cartController {
 
     public void setOrderList(order orderList) {
         this.orderList = orderList;
+        orderList.displayItemsInCart();
         displayItemsToScreen();
         displayTotalCost();
     }
 
     public void displayItemsToScreen() {
+        order_items.getChildren().clear();
         ArrayList<menuItems> duplicates = new ArrayList<>();
 
         if (orderList != null) {
