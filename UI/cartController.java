@@ -31,8 +31,8 @@ public class cartController {
     //JDBC connection
     static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/littlecaesars";
     static final String USER = "root";
-    static final String PASSWORD = "littleCaesars";
-    //static final String PASSWORD = "ilovemysql23";
+    // static final String PASSWORD = "littleCaesars";
+    static final String PASSWORD = "ilovemysql23";
 
     private Stage stage;
     private Scene scene;
@@ -171,7 +171,7 @@ public class cartController {
             preparedStatement.setInt(2, orderList.getDateOrdered());
             preparedStatement.setDouble(3, orderList.getTip());
             //Im about to end it all rn
-            preparedStatement.setInt(4, customer.getCustomerID());
+            // preparedStatement.setInt(4, customer.getCustomerID());
         }
         catch (Exception error) {
             error.printStackTrace();
