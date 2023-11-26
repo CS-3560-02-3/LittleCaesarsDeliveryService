@@ -39,7 +39,7 @@ public class mainMenuController {
     @FXML
     private Label loginMessageLabel;
 
-    private boolean loggedIn = false;
+
 
     @FXML
     private void initialize() {

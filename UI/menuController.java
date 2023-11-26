@@ -23,7 +23,6 @@ public class menuController {
     @FXML
     private Button login;
 
-    private boolean loggedIn = true;
 
     @FXML
     private void initialize() {

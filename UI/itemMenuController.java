@@ -110,7 +110,5 @@ public class itemMenuController {
         }
     }
 
-    public void setLoggedInStatus(boolean status) {
-        loggedIn = status;
-    }
+
 }
