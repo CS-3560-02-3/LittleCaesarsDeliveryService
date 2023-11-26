@@ -11,7 +11,8 @@ public class order {
     //JDBC connection
     static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/littlecaesars";
     static final String USER = "root";
-    static final String PASSWORD = "ilovemysql23";
+    static final String PASSWORD = "littleCaesars";
+    //static final String PASSWORD = "ilovemysql23";
 
     //attributes
     private int orderID;
@@ -107,7 +108,7 @@ public class order {
     } //end Constuctor
 
     //get methods for order ID
-    public int OrderID() {
+    public int getOrderID() {
         return orderID;
     }
 
@@ -124,6 +125,10 @@ public class order {
     //get method for getting the tip
     public double getTip() {
         return tip;
+    }
+
+    public void setTip(int tip) {
+        this.tip = tip;
     }
     
     //method to get the orderList
