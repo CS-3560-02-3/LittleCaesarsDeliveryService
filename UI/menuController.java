@@ -2,6 +2,7 @@ package UI;
 
 import java.io.IOException;
 
+import Model.customer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,7 +18,6 @@ public class menuController {
     private Scene scene;
     private boolean loggedIn = true;
     private int customerID;
-
     @FXML
     private StackPane hoverContent;
 
@@ -43,6 +43,9 @@ public class menuController {
             hoverContent.setVisible(false);
     }
 
+    public void setCustomer(customer Customer) {
+        this.Customer = Customer;
+    }
 
     public void switchToEdit(ActionEvent event) throws IOException{
         // Parent root = FXMLLoader.load(getClass().getResource("view/menuEdit.fxml"));
@@ -84,7 +87,12 @@ public class menuController {
     }
 
     public void orderDelivery(ActionEvent event) throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("view/orderViewUI.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("view/orderViewUI.fxml"));
+        Parent root = loader.load();
+
+        orderController OrderController = loader.getController();
+        OrderController.setCustomer(Customer);
+
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

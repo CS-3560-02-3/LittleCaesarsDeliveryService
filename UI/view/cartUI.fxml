@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -16,26 +17,6 @@
             <Font size="32.0" />
          </font>
       </Button>
-      <CheckBox layoutX="591.0" layoutY="415.0" mnemonicParsing="false" prefWidth="53.0" text="\$1">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </CheckBox>
-      <CheckBox layoutX="669.0" layoutY="415.0" mnemonicParsing="false" text="\$2">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </CheckBox>
-      <CheckBox layoutX="740.0" layoutY="415.0" mnemonicParsing="false" text="\$3">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </CheckBox>
-      <CheckBox layoutX="813.0" layoutY="415.0" mnemonicParsing="false" text="\$0">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </CheckBox>
       <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutX="15.0" layoutY="94.0" prefHeight="445.0" prefWidth="541.0" style="-fx-background-color: white;" vbarPolicy="AS_NEEDED">
          <content>
             <VBox fx:id="order_items" prefHeight="445.0" prefWidth="541.0" style="-fx-background-color: white;" />
@@ -71,5 +52,28 @@
             <Font size="24.0" />
          </font>
       </Text>
+      <RadioButton fx:id="tip1" layoutX="582.0" layoutY="414.0" mnemonicParsing="false" onAction="#addTip" prefHeight="32.0" prefWidth="53.0" text="\$1">
+         <font>
+            <Font size="16.0" />
+         </font>
+         <toggleGroup>
+            <ToggleGroup fx:id="tipButtons" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="tip2" layoutX="653.0" layoutY="414.0" mnemonicParsing="false" onAction="#addTip" prefHeight="32.0" prefWidth="53.0" text="\$2" toggleGroup="$tipButtons">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </RadioButton>
+      <RadioButton fx:id="tip3" layoutX="729.0" layoutY="414.0" mnemonicParsing="false" onAction="#addTip" prefHeight="32.0" prefWidth="53.0" text="\$3" toggleGroup="$tipButtons">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </RadioButton>
+      <RadioButton fx:id="tip4" layoutX="808.0" layoutY="414.0" mnemonicParsing="false" onAction="#addTip" prefHeight="32.0" prefWidth="53.0" text="\$0" toggleGroup="$tipButtons">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </RadioButton>
    </children>
 </AnchorPane>
