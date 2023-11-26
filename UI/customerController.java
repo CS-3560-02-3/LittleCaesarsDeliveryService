@@ -70,6 +70,8 @@ public class customerController {
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
 
+        
+
         String DB_URL = "jdbc:mysql://127.0.0.1:3306/littlecaesars";
         String USER = "root";
         //change the password so you can view it. It is the password for your SQL login
@@ -99,11 +101,14 @@ public class customerController {
 
                 while (resultSet.next()) {
                     String retrievedPassword = resultSet.getString("password");
+                    System.out.println(password);
                     System.out.println(retrievedPassword);
 
                     if(retrievedPassword.equals(password)) {
 
                         setLoggedInStatus(true);
+                        
+                        
                         // changeScene
                         Parent root = FXMLLoader.load(getClass().getResource("view/menu.fxml"));
                         stage = (Stage)((Node)event.getSource()).getScene().getWindow();

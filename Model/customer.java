@@ -21,6 +21,7 @@ public class customer {
     private String cardNumber;
     private String cardDate;
     private String cardCVV;
+    private static String currentCustomer;
 
     //Constructor that creates the customer class
     public customer(int customerID, String username, String password, String name, String deliveryAddress, String emailAddress, String cardNumber, String cardDate, String cardCVV) {
@@ -161,4 +162,9 @@ public class customer {
     public void updateCardCVV(String newCardCVV) {
         cardCVV = newCardCVV;
     }
+
+    public static String getCurrentCustomer() {
+        return currentCustomer;
+    }
+
 } //end customer

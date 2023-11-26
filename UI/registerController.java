@@ -28,6 +28,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 
 import Model.customer;
+import UI.globalController;
 
 public class registerController {
 
@@ -36,6 +37,7 @@ public class registerController {
     static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/littlecaesars";
     static final String USER = "root";
     static final String PASSWORD = "ilovemysql23";
+    private globalController GlobalController;
 
     public static customer Customer;
 
@@ -165,11 +167,18 @@ public class registerController {
                     preparedStatement.setString(9, cvv);
                     preparedStatement.executeUpdate();
 
+                    globalController.setCustomer(Customer);
+
+                    customer testCustomer = globalController.getCustomer();
+                    System.out.println(testCustomer.getCardCVV());
+
                     Parent root = FXMLLoader.load(getClass().getResource("view/menu.fxml"));
                     stage = (Stage)((Node)event.getSource()).getScene().getWindow();
                     scene = new Scene(root);
                     stage.setScene(scene);
                     stage.show();
+
+
 
                 }
                 

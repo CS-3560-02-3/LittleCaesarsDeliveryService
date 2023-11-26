@@ -8,62 +8,10 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.menuController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: D9D9D9;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.menuController">
    <children>
-      <AnchorPane layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0">
-         <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="518.0" layoutX="214.0" layoutY="51.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="453.0" />
-            <TextField fx:id="usernameTextField" layoutX="251.0" layoutY="201.0" prefHeight="25.0" prefWidth="379.0" promptText="Enter Username" style="-fx-background-color: D9D9D9;" text="Enter Name" />
-            <Label layoutX="251.0" layoutY="175.0" text="Name">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <Label layoutX="254.0" layoutY="247.0" text="Delivery Address">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <Button fx:id="loginButton" layoutX="528.0" layoutY="492.0" mnemonicParsing="false" onAction="#switchToCustomerMainMenu" prefHeight="25.0" prefWidth="112.0" style="-fx-background-color: #FF5C00;" text="CREATE" textFill="WHITE">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Button>
-            <Line endX="302.0" layoutX="349.0" layoutY="466.0" startX="-100.0" stroke="#ff5c00" />
-            <Label layoutX="251.0" layoutY="113.0" text="CREATE ACCOUNT">
-               <font>
-                  <Font size="31.0" />
-               </font>
-            </Label>
-            <Button layoutX="249.0" layoutY="497.0" mnemonicParsing="false" onAction="#switchToCreateCustomerAccount" text="PREVIOUS" />
-            <Label fx:id="loginMessageLabel" layoutX="307.0" layoutY="169.0" textFill="RED">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <TextField fx:id="usernameTextField1" layoutX="251.0" layoutY="275.0" prefHeight="25.0" prefWidth="379.0" promptText="Enter Username" style="-fx-background-color: D9D9D9;" text="Enter Delivery Address" />
-            <Label layoutX="254.0" layoutY="316.0" text="Card Number">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <TextField fx:id="usernameTextField11" layoutX="251.0" layoutY="344.0" prefHeight="25.0" prefWidth="379.0" promptText="Enter Username" style="-fx-background-color: D9D9D9;" text="0000 0000 0000 0000" />
-            <Label layoutX="253.0" layoutY="386.0" text="Exp. Date">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <TextField fx:id="usernameTextField111" layoutX="250.0" layoutY="414.0" prefHeight="25.0" prefWidth="77.0" promptText="Enter Username" style="-fx-background-color: D9D9D9;" text="0000" />
-            <Label layoutX="417.0" layoutY="386.0" text="CVV">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <TextField fx:id="usernameTextField1111" layoutX="417.0" layoutY="414.0" prefHeight="25.0" prefWidth="77.0" promptText="Enter Username" style="-fx-background-color: D9D9D9;" text="000" />
-         </children>
-      </AnchorPane>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="518.0" layoutX="224.0" layoutY="61.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="453.0" />
-      <TextField fx:id="usernameTextField" layoutX="261.0" layoutY="211.0" prefHeight="25.0" prefWidth="379.0" promptText="Enter Username" style="-fx-background-color: D9D9D9;" text="Enter Name" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="518.0" layoutX="224.0" layoutY="41.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="453.0" />
+      <TextField fx:id="usernameTextField" layoutX="261.0" layoutY="211.0" prefHeight="25.0" prefWidth="379.0" promptText="Edit Username" style="-fx-background-color: D9D9D9;" />
       <Label layoutX="261.0" layoutY="185.0" text="Name">
          <font>
             <Font size="16.0" />
@@ -91,24 +39,24 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="usernameTextField1" layoutX="261.0" layoutY="285.0" prefHeight="25.0" prefWidth="379.0" promptText="Enter Username" style="-fx-background-color: D9D9D9;" text="Enter Delivery Address" />
+      <TextField fx:id="usernameTextField1" layoutX="261.0" layoutY="285.0" prefHeight="25.0" prefWidth="379.0" promptText="Edit Delivery Address" style="-fx-background-color: D9D9D9;" />
       <Label layoutX="264.0" layoutY="326.0" text="Card Number">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="usernameTextField11" layoutX="261.0" layoutY="354.0" prefHeight="25.0" prefWidth="379.0" promptText="Enter Username" style="-fx-background-color: D9D9D9;" text="0000 0000 0000 0000" />
+      <TextField fx:id="usernameTextField11" layoutX="261.0" layoutY="354.0" prefHeight="25.0" prefWidth="379.0" promptText="0000 0000 0000 0000" style="-fx-background-color: D9D9D9;" />
       <Label layoutX="263.0" layoutY="396.0" text="Exp. Date">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="usernameTextField111" layoutX="260.0" layoutY="424.0" prefHeight="25.0" prefWidth="77.0" promptText="Enter Username" style="-fx-background-color: D9D9D9;" text="0000" />
+      <TextField fx:id="usernameTextField111" layoutX="260.0" layoutY="424.0" prefHeight="25.0" prefWidth="77.0" promptText="0000" style="-fx-background-color: D9D9D9;" />
       <Label layoutX="427.0" layoutY="396.0" text="CVV">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="usernameTextField1111" layoutX="427.0" layoutY="424.0" prefHeight="25.0" prefWidth="77.0" promptText="Enter Username" style="-fx-background-color: D9D9D9;" text="000" />
+      <TextField fx:id="usernameTextField1111" layoutX="427.0" layoutY="424.0" prefHeight="25.0" prefWidth="77.0" promptText="0000" style="-fx-background-color: D9D9D9;" />
    </children>
 </AnchorPane>
