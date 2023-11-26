@@ -44,6 +44,8 @@ public class customerController {
 
     // public int customerID;
 
+    globalController GlobalController = globalController.getGlobalController();
+
 
     @FXML
     private void switchToUserLogin(ActionEvent e) throws IOException {
@@ -81,8 +83,8 @@ public class customerController {
         String DB_URL = "jdbc:mysql://127.0.0.1:3306/littlecaesars";
         String USER = "root";
         //change the password so you can view it. It is the password for your SQL login
-        String PASSWORD = "littleCaesars";
-        //String PASSWORD = "ilovemysql23";
+        // String PASSWORD = "littleCaesars";
+        String PASSWORD = "ilovemysql23";
         
         if(usernameTextField.getText().isEmpty() && passwordPasswordField.getText().isEmpty()) {
             loginMessageLabel.setText("Please enter username and password");
@@ -99,7 +101,7 @@ public class customerController {
                 preparedStatement.setString(1, username);
                 resultSet = preparedStatement.executeQuery();
 
-                if (!resultSet.isBeforeFirst()) {
+                if(!resultSet.isBeforeFirst()) {
                     System.out.println("Username not found");
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setContentText("Incorrect Credentials");
@@ -141,8 +143,10 @@ public class customerController {
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("view/menu.fxml"));
                         Parent root = loader.load();
 
-                        menuController MenuController = loader.getController();
-                        MenuController.setCustomerID(customerID);
+                        // menuController MenuController = loader.getController();
+                        // MenuController.setCustomerID(customerID);
+
+                        GlobalController.setCustomerID(customerID);
 
                         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
                         scene = new Scene(root);

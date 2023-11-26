@@ -12,13 +12,27 @@ import Model.customer;
 public class globalController {
     static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/littlecaesars";
     static final String USER = "root";
-    static final String PASSWORD = "littleCaesars";
-    //static final String PASSWORD = "ilovemysql23";
+    // static final String PASSWORD = "littleCaesars";
+    static final String PASSWORD = "ilovemysql23";
 
     private static globalController globalcontroller;
     private order Order;
     private boolean loggedIn;
     private static customer Customer;
+    private static final globalController GlobalController = new globalController();
+    private int customerID;
+
+    public int getCustomerID() {
+        return customerID;
+    }
+
+    public void setCustomerID(int customerID) {
+        this.customerID = customerID;
+    }
+
+    public static globalController getGlobalController() {
+        return GlobalController;
+    }
 
     //private constructor to prevent instantiation of the object from the outside. This helps create only one instance of the object at a time.
     private globalController() {
