@@ -76,6 +76,7 @@ public class editAccountController {
 
         // retrieve customer ID of current customer logged in
         int currentCustomerID = GlobalController.getCustomerID();
+        System.out.println("Current Customer ID: " + currentCustomerID);
 
         currentCustomer = new customer(currentCustomerID);
 
