@@ -10,17 +10,17 @@ public class delivery {
     static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/littlecaesars";
     static final String USER = "root";
     // static final String PASSWORD = "littleCaesars";
-    static final String PASSWORD = "ilovemysql23";
+    static final String PASSWORD = "ilovemysql123";
 
     //private global variables
     private int deliveryID;
     private int estimatedTime;
-    private boolean deliveryStatus;
+    private String deliveryStatus;
     private int deliveryDate;    
     private driver Driver;
 
     //constructor method to define the delivery number and the approximate time it will take to get to the customer's house
-    public delivery (int deliveryID, int estimatedTime, boolean deliveryStatus, int deliveryDate) {
+    public delivery (int deliveryID, int estimatedTime, String deliveryStatus, int deliveryDate) {
         this.deliveryID = deliveryID;
         this.estimatedTime = estimatedTime;
         this.deliveryStatus = deliveryStatus;
@@ -37,10 +37,10 @@ public class delivery {
             preparedStatement = connection.prepareStatement("SELECT * FROM delivery WHERE deliveryID = ?");
             preparedStatement.setInt(1, deliveryID);
             resultSet = preparedStatement.executeQuery();
-
-            estimatedTime = resultSet.getInt("estimatedTime");
-            deliveryStatus = resultSet.getBoolean("deliveryStatus");
-            deliveryDate = resultSet.getInt("deliveryDate");
+            while(resultSet.next()) {
+                estimatedTime = resultSet.getInt("estimatedTime");
+                deliveryStatus = resultSet.getString("deliveryStatus");
+            }
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -79,7 +79,7 @@ public class delivery {
     } //end getDeliveryNumber
 
     //Gets the delivery status
-    public boolean getDeliveryStatus() {
+    public String getDeliveryStatus() {
         return deliveryStatus;
     } //end getDeliveryStatus
 

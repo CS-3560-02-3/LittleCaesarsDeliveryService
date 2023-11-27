@@ -10,7 +10,7 @@ public class driver {
     static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/littlecaesars";
     static final String USER = "root";
     // static final String PASSWORD = "littleCaesars";
-    static final String PASSWORD = "ilovemysql";
+    static final String PASSWORD = "ilovemysql123";
 
     //private global variables
     private int driverID;
@@ -39,11 +39,12 @@ public class driver {
             preparedStatement = connection.prepareStatement("SELECT * FROM driver WHERE driverID = ?");
             preparedStatement.setInt(1, driverID);
             resultSet = preparedStatement.executeQuery();
-
-            username = resultSet.getString("username");
-            password = resultSet.getString("password");
-            name = resultSet.getString("name");
-            licensePlateNumber = resultSet.getString("licensePlateNumber");
+            while(resultSet.next()) {
+                name = resultSet.getString("name");
+                username = resultSet.getString("username");
+                password = resultSet.getString("password");
+                licensePlateNumber = resultSet.getString("vehiclePlateNumber");
+            }
         }
         catch (Exception e) {
             e.printStackTrace();
