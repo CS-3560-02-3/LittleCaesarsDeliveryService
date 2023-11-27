@@ -1,7 +1,6 @@
 package Model;
 
 import java.util.ArrayList;
-import java.util.Objects;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -18,7 +17,7 @@ public class order {
     private int orderID;
     private int dateOrdered;
     private double totalCost;
-    private double tip;
+    private int tip;
     private ArrayList<menuItems> orderList; // Data structure for the order
     private delivery Delivery;
     private customer Customer;
@@ -35,7 +34,7 @@ public class order {
 
 
     //constructor for order class
-    public order(int orderID, int dateOrdered, double totalCost, double tip) {
+    public order(int orderID, int dateOrdered, double totalCost, int tip) {
         this.orderID = orderID;
         this.dateOrdered = dateOrdered;
         this.totalCost = totalCost;
@@ -49,6 +48,9 @@ public class order {
         this.wingsCounter = 0;
         this.crazyBreadCounter = 0;
         this.sodaCounter = 0;
+
+        //sql insert statements
+
     } //end constructor
     
     //constructor to add values through the SQL database
@@ -64,7 +66,7 @@ public class order {
             resultSet = preparedStatement.executeQuery();
 
             dateOrdered = resultSet.getInt("dateOrdered");
-            totalCost = resultSet.getDouble("totalCost");
+            totalCost = 0;
             tip = resultSet.getInt("tip");
             this.orderList = new ArrayList<>();
             this.cheeseCounter = 0;
@@ -123,7 +125,7 @@ public class order {
     }
 
     //get method for getting the tip
-    public double getTip() {
+    public int getTip() {
         return tip;
     }
 

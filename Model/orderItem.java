@@ -11,6 +11,7 @@ public class orderItem {
     static final String USER = "root";
     //change the password so you can view it. It is the password for your SQL login
     static final String PASSWORD = "littleCaesars";
+    //static final String PASSWORD = "ilovemysql23";
     
     private int orderID;
     private int itemID;

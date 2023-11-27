@@ -12,8 +12,8 @@ import Model.customer;
 public class globalController {
     static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/littlecaesars";
     static final String USER = "root";
-    // static final String PASSWORD = "littleCaesars";
-    static final String PASSWORD = "ilovemysql23";
+    static final String PASSWORD = "littleCaesars";
+    //static final String PASSWORD = "ilovemysql23";
 
     private static globalController globalcontroller;
     private order Order;
@@ -22,6 +22,16 @@ public class globalController {
     private static final globalController GlobalController = new globalController();
     private int customerID;
     private customer currentCustomer;
+
+    //private constructor to prevent instantiation of the object from the outside. This helps create only one instance of the object at a time.
+    /* private globalController() {
+        loggedIn = false;
+        Order = getCurrentOrder();
+    } */
+    
+    public static globalController getGlobalController() {
+        return GlobalController;
+    }
 
     public int getCustomerID() {
         return customerID;
@@ -39,15 +49,15 @@ public class globalController {
         this.currentCustomer = currentCustomer;
     }
 
-    public static globalController getGlobalController() {
-        return GlobalController;
+    public order getOrder() {
+        return Order;
     }
 
-    //private constructor to prevent instantiation of the object from the outside. This helps create only one instance of the object at a time.
-    private globalController() {
-        loggedIn = false;
-        getCurrentOrder();
+    public void setOrder(order Order) {
+        this.Order = Order;
     }
+
+
 
     //make sure that there is only one instantiation at a time. Ensures only one user can use the application at a time.
     public static globalController instantiateGlobalController() {

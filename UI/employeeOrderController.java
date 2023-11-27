@@ -58,7 +58,8 @@ public class employeeOrderController {
         String DB_URL = "jdbc:mysql://127.0.0.1:3306/littlecaesars";
         String USER = "root";
         //change the password so you can view it. It is the password for your SQL login
-        String PASSWORD = "ilovemysql23";
+        String PASSWORD = "littleCaesars";
+        //String PASSWORD = "ilovemysql23";
         
         if(usernameTextField.getText().isEmpty() && passwordPasswordField.getText().isEmpty()) {
             loginMessageLabel.setText("Please enter username and password");
