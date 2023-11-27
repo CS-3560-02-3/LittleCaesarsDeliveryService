@@ -8,10 +8,11 @@ import java.sql.SQLException;
 import java.util.Objects;
 
 public class menuItems {
+    //JDBC connection
     static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/littlecaesars";
     static final String USER = "root";
-    // static final String PASSWORD = "littleCaesars";
-    static final String PASSWORD = "ilovemysql23";
+    static final String PASSWORD = "littleCaesars";
+    //static final String PASSWORD = "ilovemysql23";
 
     //private global varibles
     private int itemID;
@@ -87,6 +88,7 @@ public class menuItems {
         return itemPrice;
     }
 
+    //override methods to compare the objects
     @Override
     public boolean equals(Object object) {
         if (this == object)
@@ -101,4 +103,4 @@ public class menuItems {
     public int hashCode() {
         return Objects.hash(getName());
     }
-}
+} //end menuItems

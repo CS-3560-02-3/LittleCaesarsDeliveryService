@@ -1,5 +1,5 @@
 package UI;
-import Model.customer;
+
 import Model.menuItems;
 import Model.order;
 
@@ -15,14 +15,9 @@ import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.Statement;
-
-import com.mysql.cj.x.protobuf.MysqlxCrud.Order;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -33,23 +28,13 @@ public class orderController {
     static final String PASSWORD = "littleCaesars";
     //static final String PASSWORD = "ilovemysql23";
 
-    //Stage and Scene declaration
+    //global declarations
     private Stage stage;
     private Scene scene;
-    /* private customer Customer; */
-   /*  private globalController globalcontroller = globalController.instantiateGlobalController(); */
-    globalController GlobalController = globalController.getGlobalController();
     private order orderList;
-
-    //doesnt work
-    /* public void setGlobalController(globalController globalcontroller) {
-        this.globalcontroller = globalcontroller;
-    } */
-
-    /* //Calling the global Controller in order to instantiate a globalController Object
-    globalController globalcontroller = globalController.instantiateGlobalController();
-    //Using the globalController Object in order to instantiate the customer's orderList
-    order orderList = globalcontroller.getCurrentOrder(); */
+    
+    //instantiate the GlobalController to retreive the order data
+    globalController GlobalController = globalController.getGlobalController();
     
     //initialize menu item objects
     menuItems CheesePizza = new menuItems(1);
@@ -158,8 +143,10 @@ public class orderController {
     @FXML
     private Text sodaCounter;
 
-    //initializer method in order to set the counters to their right values
+    //initializer method in order to set the order object and counters to their right values
     public void initialize() {
+        //checks to make sure that the order object hasn't been instantiated before. 
+        //This provides the rememberance of the order data if a customer wants to go back and change their order
         if (GlobalController.getOrder() == null) {
             Connection connection = null;
             Statement statement = null;
@@ -168,44 +155,19 @@ public class orderController {
             try {
                 connection = DriverManager.getConnection(DB_URL, USER, PASSWORD);
                 statement = connection.createStatement();
-                System.out.println("about to SELCET");
+                System.out.println("about to select the order ID");
                 resultSet = statement.executeQuery("SELECT orderID FROM `order` WHERE orderID = (SELECT MAX(orderID) FROM `order`)");
-                System.out.println("SELCET");
-    
+                System.out.println("Selected");
+
                 int OrderID = 0;
                 while (resultSet.next()) {
                     OrderID = resultSet.getInt("orderID");
                 }
-                System.out.println(OrderID);
-    
                 OrderID++;
-                System.out.println(OrderID);
+                System.out.println("Order ID: " + OrderID);
     
                 orderList = new order(OrderID, 1127, 0, 0);
                 GlobalController.setOrder(orderList);
-    
-                /* System.out.println("about to INSERT");
-                PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO `order` (orderID, dateOrdered, tip, customerID) VALUES (?, ?, ?, ?);");
-                preparedStatement.setInt(1, OrderID);
-                preparedStatement.setInt(2, 1127);
-                preparedStatement.setInt(3, 0);
-                preparedStatement.setInt(4, GlobalController.getCustomerID());
-    
-                preparedStatement.executeUpdate();
-                System.out.println("INSERT");
-    
-                //issue
-                System.out.println("about to create object");
-                orderList = new order(OrderID, 1127, 0, 0);
-                System.out.println(orderList.getOrderID());
-                System.out.println(orderList.getDateOrdered());
-                System.out.println(orderList.getTotalCost());
-                System.out.println(orderList.getTip());
-                System.out.println(GlobalController.getCustomerID());
-                System.out.println("create object");
-                System.out.println("about to assign to globak");
-                GlobalController.setOrder(orderList);
-                System.out.println("assgined to global"); */
             }
             catch (Exception e) {
                 e.printStackTrace();
@@ -237,19 +199,12 @@ public class orderController {
                 }
             }
         }
+        //if the orderlist was already instantiated, get the data from the global controller
         else {
             orderList = GlobalController.getOrder();
         }
 
-
-        //assigning the orderlist to the customer
-
-        /* //Calling the global Controller in order to instantiate a globalController Object
-        globalcontroller = globalController.instantiateGlobalController();
-        //Using the globalController Object in order to instantiate the customer's orderList
-        orderList = globalcontroller.getCurrentOrder(); */
-
-        //order orderList = globalcontroller.getOrder();
+        //setting counter values
         if (cheeseCounter != null)
             cheeseCounter.setText(String.valueOf(orderList.getCounterValue(CheesePizza)));
         if (pepperoniCounter != null)
@@ -266,15 +221,10 @@ public class orderController {
             crazyBreadCounter.setText(String.valueOf(orderList.getCounterValue(CrazyBread)));
         if (sodaCounter != null)
             sodaCounter.setText(String.valueOf(orderList.getCounterValue(Soda)));
-    }
-
-    /* public void setCustomer(customer Customer) {
-        this.Customer = Customer;
-    } */
+    } //end initialize
 
     //method to add an item to the cart
     public void AddingToCart(ActionEvent event) {
-        //order orderList = globalcontroller.getOrder();
         Button clickedButton = (Button) event.getSource(); 
         String buttonID = clickedButton.getId();
 
@@ -464,10 +414,6 @@ public class orderController {
     public void switchToCart(ActionEvent e) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("view/cartUI.fxml"));
         Parent root = loader.load();
-
-        /* cartController cartcontroller = loader.getController();
-        cartcontroller.setGlobalController(globalcontroller); */
-        
         stage = (Stage)((Node)e.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

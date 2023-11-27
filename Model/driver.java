@@ -7,10 +7,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class driver {
+    //JDBC Connection
     static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/littlecaesars";
     static final String USER = "root";
-    // static final String PASSWORD = "littleCaesars";
-    static final String PASSWORD = "ilovemysql";
+    static final String PASSWORD = "littleCaesars";
+    //static final String PASSWORD = "ilovemysql";
 
     //private global variables
     private int driverID;
@@ -19,7 +20,6 @@ public class driver {
     private String name;
     private String licensePlateNumber;
     
-
     //constructor to define the private variables
     public driver(int driverID, String username, String password, String name, String licensePlateNumber) {
         this.driverID = driverID;
@@ -100,4 +100,4 @@ public class driver {
     public String getLicensePlateNumber() {
         return licensePlateNumber;
     }
-}
+} //end driver
