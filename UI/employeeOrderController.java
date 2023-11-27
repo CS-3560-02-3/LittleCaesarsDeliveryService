@@ -12,6 +12,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -30,12 +31,23 @@ public class employeeOrderController {
     private PasswordField passwordPasswordField;
 
     @FXML
+    private Button backButton;
+
+    @FXML
     private Label loginMessageLabel;
 
     public void signOut(ActionEvent event) throws IOException {
 
         Parent root = FXMLLoader.load(getClass().getResource("view/mainMenu.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void switchToMainMenu(ActionEvent e) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("view/mainMenu.fxml"));
+        stage = (Stage)((Node)e.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
