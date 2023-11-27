@@ -12,7 +12,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.mainMenuController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff7b34" height="91.0" stroke="BLACK" strokeType="INSIDE" width="900.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff5c00" height="91.0" stroke="BLACK" strokeType="INSIDE" width="900.0" />
       <Text layoutX="14.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LITTLE CAESARS">
          <font>
             <Font size="48.0" />
