@@ -33,15 +33,17 @@ public class menuController {
     customer currentCustomer;
 
     @FXML
-    private void initialize() {
+    public void initialize() {
         if (hoverContent != null)
             hoverContent.setVisible(false);
         
         // retrieve currently logged in customer by ID
-        // int currentCustomerID = GlobalController.getCustomerID();
-        // currentCustomer = GlobalController.getCurrentCustomer();
+        int currentCustomerID = GlobalController.getCustomerID();
+        System.out.println("Switched to logged in menu page");
+        System.out.println("Current Customer ID: " + currentCustomerID);
+        customer Customer = new customer(currentCustomerID);
         
-
+        userName.setText("Hi, " + Customer.getName());
     }
 
     @FXML
