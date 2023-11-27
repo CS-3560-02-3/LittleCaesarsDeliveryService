@@ -13,7 +13,7 @@ public class confirmationController {
     private Stage stage;
     private Scene scene;
 
-
+    //scene transition
     public void switchToMainMenu(ActionEvent e) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("view/menu.fxml"));
         stage = (Stage)((Node)e.getSource()).getScene().getWindow();
@@ -21,4 +21,4 @@ public class confirmationController {
         stage.setScene(scene);
         stage.show();
     }
-}
+} //end confirmationController

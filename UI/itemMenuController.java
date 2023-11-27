@@ -10,16 +10,17 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class itemMenuController {
+    //global declarations
     private Stage stage;
     private Scene scene;
-    private globalController globalcontroller;
     private boolean loggedIn;
 
+    //method to set the logged in status
     public void setLoggedInStatus(boolean loggedIn) {
         this.loggedIn = loggedIn;
     }
 
-
+    //scene transitions
     public void switchToMenu(ActionEvent e) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("view/itemMenuViewUI.fxml"));
         stage = (Stage)((Node)e.getSource()).getScene().getWindow();
@@ -92,7 +93,7 @@ public class itemMenuController {
         stage.show();
     }
 
-    //need to fix this with a global boolean but if i can't find a solution, I'm creating 9 new fxml files that are the exact same thing
+    //checks to see whether or not a user is logged in, then take them to the desired main menu
     public void switchToMainMenu(ActionEvent e) throws IOException {
         if (!loggedIn) {
             Parent root = FXMLLoader.load(getClass().getResource("view/mainMenu.fxml"));
@@ -109,6 +110,4 @@ public class itemMenuController {
             stage.show();
         }
     }
-
-
-}
+} //end itemMenuController
