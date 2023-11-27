@@ -3,6 +3,7 @@ package UI;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import Model.customer;
 import Model.menuItems;
 import Model.order;
 
@@ -31,13 +32,14 @@ public class cartController {
     //JDBC connection
     static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/littlecaesars";
     static final String USER = "root";
-    // static final String PASSWORD = "littleCaesars";
-    static final String PASSWORD = "ilovemysql23";
+    static final String PASSWORD = "littleCaesars";
+    //static final String PASSWORD = "ilovemysql23";
 
     private Stage stage;
     private Scene scene;
-    private globalController globalcontroller;
+    globalController GlobalController = globalController.getGlobalController();
     private order orderList;
+    private customer Customer;
     private int tip;
 
     @FXML
@@ -68,17 +70,25 @@ public class cartController {
     private RadioButton tip0;
     
 
-    public void setGlobalController(globalController globalcontroller) {
+    public void initialize() {
+        orderList = GlobalController.getOrder();
+        Customer = GlobalController.getCurrentCustomer();
+        displayItemsToScreen();
+        displayTotalCost();
+    }
+
+
+   /*  public void setGlobalController(globalController globalcontroller) {
         this.globalcontroller = globalcontroller;
         setOrderList();
     }
     
     public void setOrderList() {
         this.orderList = globalcontroller.getCurrentOrder(); 
-        displayItemsToScreen();
-        displayTotalCost();
+        //this.Customer = globalcontroller.getCurrentCustomer();
+        
     }
-
+ */
     public void displayItemsToScreen() {
         order_items.getChildren().clear();
         ArrayList<menuItems> duplicates = new ArrayList<>();
@@ -165,13 +175,30 @@ public class cartController {
         ResultSet resultSet = null;
 
         try {
+            /* connection = DriverManager.getConnection(DB_URL, USER, PASSWORD);
+            preparedStatement = connection.prepareStatement("UPDATE `order` SET tip = ?, customerID = ? WHERE orderID = ? ");
+
+            preparedStatement.setInt(1, tip);
+            preparedStatement.setInt(2, GlobalController.getCustomerID());
+            preparedStatement.setInt(3, orderList.getOrderID());
+
+            preparedStatement.executeUpdate();
+            System.out.println("order has been updated with the right attributes in cartController"); */
+
             connection = DriverManager.getConnection(DB_URL, USER, PASSWORD);
+
             preparedStatement = connection.prepareStatement("INSERT INTO `order` (orderID, dateOrdered, tip, customerID) VALUES (?, ?, ?, ?);");
             preparedStatement.setInt(1, orderList.getOrderID());
             preparedStatement.setInt(2, orderList.getDateOrdered());
-            preparedStatement.setDouble(3, orderList.getTip());
-            //Im about to end it all rn
-            // preparedStatement.setInt(4, customer.getCustomerID());
+            preparedStatement.setInt(3, orderList.getTip());
+            preparedStatement.setInt(4, GlobalController.getCustomerID());
+
+            preparedStatement.executeUpdate();
+            System.out.println("INSERT");
+            /* preparedStatement.setInt(1, orderList.getOrderID());
+            preparedStatement.setInt(2, orderList.getDateOrdered());
+            preparedStatement.setInt(3, orderList.getTip());
+            preparedStatement.setInt(4, Customer.getCustomerID()); */
         }
         catch (Exception error) {
             error.printStackTrace();
@@ -213,14 +240,6 @@ public class cartController {
 
     public void switchToMenu(ActionEvent e) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("view/orderViewUI.fxml"));
-        stage = (Stage)((Node)e.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    public void switchToMainMenu(ActionEvent e) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("view/menu.fxml"));
         stage = (Stage)((Node)e.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

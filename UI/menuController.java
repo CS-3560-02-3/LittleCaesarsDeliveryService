@@ -29,8 +29,9 @@ public class menuController {
     @FXML
     private Text userName;
 
-    globalController GlobalController = globalController.getGlobalController();
-    customer currentCustomer;
+    globalController GlobalController = globalController.instantiateGlobalController();
+    customer currentCustomer = globalController.getCustomer();
+    
 
     @FXML
     private void initialize() {
@@ -40,7 +41,6 @@ public class menuController {
         // retrieve currently logged in customer by ID
         // int currentCustomerID = GlobalController.getCustomerID();
         // currentCustomer = GlobalController.getCurrentCustomer();
-        
 
     }
 
@@ -102,9 +102,6 @@ public class menuController {
     public void orderDelivery(ActionEvent event) throws IOException{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("view/orderViewUI.fxml"));
         Parent root = loader.load();
-
-        orderController OrderController = loader.getController();
-        OrderController.setCustomer(Customer);
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);

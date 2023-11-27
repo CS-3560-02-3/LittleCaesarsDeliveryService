@@ -20,6 +20,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
+
+import com.mysql.cj.x.protobuf.MysqlxCrud.Order;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -27,19 +30,26 @@ public class orderController {
     //JDBC connection
     static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/littlecaesars";
     static final String USER = "root";
-    // static final String PASSWORD = "littleCaesars";
-    static final String PASSWORD = "ilovemysql23";
+    static final String PASSWORD = "littleCaesars";
+    //static final String PASSWORD = "ilovemysql23";
 
     //Stage and Scene declaration
     private Stage stage;
     private Scene scene;
-    private customer Customer;
-    
-    //Calling the global Controller in order to instantiate a globalController Object
+    /* private customer Customer; */
+   /*  private globalController globalcontroller = globalController.instantiateGlobalController(); */
+    globalController GlobalController = globalController.getGlobalController();
+    private order orderList;
+
+    //doesnt work
+    /* public void setGlobalController(globalController globalcontroller) {
+        this.globalcontroller = globalcontroller;
+    } */
+
+    /* //Calling the global Controller in order to instantiate a globalController Object
     globalController globalcontroller = globalController.instantiateGlobalController();
     //Using the globalController Object in order to instantiate the customer's orderList
-    order orderList = globalcontroller.getCurrentOrder();
-    //assigning the orderlist to the customer
+    order orderList = globalcontroller.getCurrentOrder(); */
     
     //initialize menu item objects
     menuItems CheesePizza = new menuItems(1);
@@ -150,23 +160,51 @@ public class orderController {
 
     //initializer method in order to set the counters to their right values
     public void initialize() {
-        /* Connection connection = null;
+        Connection connection = null;
         Statement statement = null;
         ResultSet resultSet = null;
 
         try {
             connection = DriverManager.getConnection(DB_URL, USER, PASSWORD);
             statement = connection.createStatement();
+            System.out.println("about to SELCET");
             resultSet = statement.executeQuery("SELECT orderID FROM `order` WHERE orderID = (SELECT MAX(orderID) FROM `order`)");
-            
+            System.out.println("SELCET");
 
-            if (resultSet.next()) {
-                int orderID = resultSet.getInt("orderID") + 1;
-                orderList = new order(orderID, 1127, 0, 0);
+            int OrderID = 0;
+            while (resultSet.next()) {
+                OrderID = resultSet.getInt("orderID");
             }
-            else {
-                System.out.println("No Order ID found in Database");
-            }
+            System.out.println(OrderID);
+
+            OrderID++;
+            System.out.println(OrderID);
+
+            orderList = new order(OrderID, 1127, 0, 0);
+            GlobalController.setOrder(orderList);
+
+            /* System.out.println("about to INSERT");
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO `order` (orderID, dateOrdered, tip, customerID) VALUES (?, ?, ?, ?);");
+            preparedStatement.setInt(1, OrderID);
+            preparedStatement.setInt(2, 1127);
+            preparedStatement.setInt(3, 0);
+            preparedStatement.setInt(4, GlobalController.getCustomerID());
+
+            preparedStatement.executeUpdate();
+            System.out.println("INSERT");
+
+            //issue
+            System.out.println("about to create object");
+            orderList = new order(OrderID, 1127, 0, 0);
+            System.out.println(orderList.getOrderID());
+            System.out.println(orderList.getDateOrdered());
+            System.out.println(orderList.getTotalCost());
+            System.out.println(orderList.getTip());
+            System.out.println(GlobalController.getCustomerID());
+            System.out.println("create object");
+            System.out.println("about to assign to globak");
+            GlobalController.setOrder(orderList);
+            System.out.println("assgined to global"); */
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -198,9 +236,13 @@ public class orderController {
             }
         }
         //assigning the orderlist to the customer
-        if (orderList != null)
-            orderList.assignCustomer(Customer); */
 
+        /* //Calling the global Controller in order to instantiate a globalController Object
+        globalcontroller = globalController.instantiateGlobalController();
+        //Using the globalController Object in order to instantiate the customer's orderList
+        orderList = globalcontroller.getCurrentOrder(); */
+
+        //order orderList = globalcontroller.getOrder();
         if (cheeseCounter != null)
             cheeseCounter.setText(String.valueOf(orderList.getCounterValue(CheesePizza)));
         if (pepperoniCounter != null)
@@ -219,12 +261,13 @@ public class orderController {
             sodaCounter.setText(String.valueOf(orderList.getCounterValue(Soda)));
     }
 
-    public void setCustomer(customer Customer) {
+    /* public void setCustomer(customer Customer) {
         this.Customer = Customer;
-    }
+    } */
 
     //method to add an item to the cart
     public void AddingToCart(ActionEvent event) {
+        //order orderList = globalcontroller.getOrder();
         Button clickedButton = (Button) event.getSource(); 
         String buttonID = clickedButton.getId();
 
@@ -275,6 +318,7 @@ public class orderController {
 
     //helper method to increment the counter on both the frontend and backend
     private void addCounter(menuItems item, Text counterText) {
+        //order orderList = globalcontroller.getOrder();
         int currentCounterBackend = orderList.getCounterValue(item);
         orderList.updateCounter(item, currentCounterBackend + 1);
 
@@ -284,6 +328,7 @@ public class orderController {
 
     //method to remove an item from the cart
     public void RemovingFromCart(ActionEvent event) {
+        order orderList = GlobalController.getOrder();
         Button clickedButton = (Button) event.getSource(); 
         String buttonID = clickedButton.getId();
 
@@ -326,6 +371,7 @@ public class orderController {
 
     //helper method to decrement the counter on both the frontend and backend
     private void subtractCounter(menuItems item, Text counterText) {
+        //order orderList = globalcontroller.getOrder();
         int currentCounterBackEnd = orderList.getCounterValue(item);
         if (currentCounterBackEnd > 0)
             orderList.updateCounter(item, currentCounterBackEnd - 1);
@@ -412,8 +458,8 @@ public class orderController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("view/cartUI.fxml"));
         Parent root = loader.load();
 
-        cartController cartcontroller = loader.getController();
-        cartcontroller.setGlobalController(globalcontroller);
+        /* cartController cartcontroller = loader.getController();
+        cartcontroller.setGlobalController(globalcontroller); */
         
         stage = (Stage)((Node)e.getSource()).getScene().getWindow();
         scene = new Scene(root);

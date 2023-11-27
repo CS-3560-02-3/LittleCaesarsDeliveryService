@@ -83,8 +83,8 @@ public class customerController {
         String DB_URL = "jdbc:mysql://127.0.0.1:3306/littlecaesars";
         String USER = "root";
         //change the password so you can view it. It is the password for your SQL login
-        // String PASSWORD = "littleCaesars";
-        String PASSWORD = "ilovemysql23";
+        String PASSWORD = "littleCaesars";
+        //String PASSWORD = "ilovemysql23";
         
         if(usernameTextField.getText().isEmpty() && passwordPasswordField.getText().isEmpty()) {
             loginMessageLabel.setText("Please enter username and password");
@@ -139,6 +139,8 @@ public class customerController {
                         // String testCVV = testCustomer.getCardCVV();
                         // System.out.println(testCVV);
                         
+                        GlobalController.setCustomerID(customerID);
+                        System.out.println("this is the customer id " + GlobalController.getCustomerID());
                         // changeScene
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("view/menu.fxml"));
                         Parent root = loader.load();
@@ -146,7 +148,6 @@ public class customerController {
                         // menuController MenuController = loader.getController();
                         // MenuController.setCustomerID(customerID);
 
-                        GlobalController.setCustomerID(customerID);
 
                         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
                         scene = new Scene(root);
