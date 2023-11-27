@@ -39,11 +39,12 @@ public class driver {
             preparedStatement = connection.prepareStatement("SELECT * FROM driver WHERE driverID = ?");
             preparedStatement.setInt(1, driverID);
             resultSet = preparedStatement.executeQuery();
-
-            username = resultSet.getString("username");
-            password = resultSet.getString("password");
-            name = resultSet.getString("name");
-            licensePlateNumber = resultSet.getString("licensePlateNumber");
+            while(resultSet.next()) {
+                name = resultSet.getString("name");
+                username = resultSet.getString("username");
+                password = resultSet.getString("password");
+                licensePlateNumber = resultSet.getString("vehiclePlateNumber");
+            }
         }
         catch (Exception e) {
             e.printStackTrace();
