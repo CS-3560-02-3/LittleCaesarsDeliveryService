@@ -1,16 +1,20 @@
 package UI;
 
 import Model.order;
+
+import java.util.ArrayList;
+
 import Model.customer;
 public class globalController {
     //JDBC connection
     static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/littlecaesars";
     static final String USER = "root";
-    static final String PASSWORD = "littleCaesars";
+    static final String PASSWORD = "ilovemysql123";
     //static final String PASSWORD = "ilovemysql23";
 
     //Creation of the Data Singleton to make sure that only one instance of the data is present during a login session
     private static final globalController GlobalController = new globalController();
+    public static ArrayList<String> orders = new ArrayList<>();
     private customer currentCustomer;
     private int customerID;
     private order Order;
