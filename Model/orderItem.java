@@ -10,8 +10,8 @@ public class orderItem {
     static final String DB_URL = "jdbc:mysql://localhost:3306/littlecaesars";
     static final String USER = "root";
     //change the password so you can view it. It is the password for your SQL login
-    static final String PASSWORD = "littleCaesars";
-    //static final String PASSWORD = "ilovemysql23";
+    // static final String PASSWORD = "littleCaesars";
+    static final String PASSWORD = "ilovemysql23";
     
     private int orderID;
     private int itemID;

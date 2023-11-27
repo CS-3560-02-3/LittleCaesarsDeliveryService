@@ -29,7 +29,9 @@ public class menuController {
     @FXML
     private Text userName;
 
-    globalController GlobalController = globalController.instantiateGlobalController();
+    // globalController GlobalController = globalController.instantiateGlobalController();
+    globalController GlobalController = globalController.getGlobalController();
+
     customer currentCustomer = globalController.getCustomer();
     
 
@@ -40,8 +42,9 @@ public class menuController {
         
         // retrieve currently logged in customer by ID
         int currentCustomerID = GlobalController.getCustomerID();
-        System.out.println("Switched to logged in menu page");
         System.out.println("Current Customer ID: " + currentCustomerID);
+
+        System.out.println("Switched to logged in menu page");
         customer Customer = new customer(currentCustomerID);
         
         userName.setText("Hi, " + Customer.getName());
