@@ -16,6 +16,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -34,6 +35,9 @@ public class customerController {
     private Button createAccountButton;
 
     @FXML
+    private Button backButton;
+
+    @FXML
     private Label loginMessageLabel;
 
     public static customer Customer;
@@ -44,6 +48,15 @@ public class customerController {
     public void switchToCreateCustomerAccount(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("view/customerRegister.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    private void switchToMainMenu(ActionEvent e) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("view/mainMenu.fxml"));
+        stage = (Stage)((Node)e.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();

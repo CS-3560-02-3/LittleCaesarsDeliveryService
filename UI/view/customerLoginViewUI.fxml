@@ -41,5 +41,6 @@
             <Font size="16.0" />
          </font>
       </Label>
+      <Button fx:id="backButton" layoutX="230.0" layoutY="512.0" mnemonicParsing="false" onAction="#switchToMainMenu" text="BACK TO MAIN MENU" />
    </children>
 </AnchorPane>
