@@ -72,6 +72,7 @@ public class customerController {
         stage.show();
     }
 
+    // method to log in
     public void switchToCustomerMainMenu(ActionEvent event) throws IOException{
 
         Connection connection = null;
@@ -131,8 +132,8 @@ public class customerController {
 
                         // Customer = new customer(customerID);
 
-                        
-                        
+                        GlobalController.setCustomerID(customerID);
+                        System.out.println("this is " + GlobalController.getCustomerID());
                         // globalController.setCustomer(Customer);
 
                         // customer testCustomer = globalController.getCustomer();
@@ -143,10 +144,10 @@ public class customerController {
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("view/menu.fxml"));
                         Parent root = loader.load();
 
-                        // menuController MenuController = loader.getController();
-                        // MenuController.setCustomerID(customerID);
+                        
 
-                        GlobalController.setCustomerID(customerID);
+                       
+                        
 
                         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
                         scene = new Scene(root);
