@@ -1,35 +1,27 @@
 package UI;
 
 import java.io.IOException;
-import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ResourceBundle;
-
-import Database.DButil;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
 
 
 public class employeeOrderController {
     private Stage stage;
     private Scene scene;
-    private globalController globalController;
 
     @FXML
     private TextField usernameTextField;
@@ -67,16 +59,21 @@ public class employeeOrderController {
         else 
         {
 
-                // Open a connection
             try 
             {   
+                // retrieving information from user
                 String username = usernameTextField.getText();
                 String password = passwordPasswordField.getText();
+
+                // connecting to database
                 connection = DriverManager.getConnection(DB_URL, USER, PASSWORD);
+
+                // retrieving password associated to username from database
                 preparedStatement = connection.prepareStatement("SELECT password FROM driver WHERE username = ?");
                 preparedStatement.setString(1, username);
                 resultSet = preparedStatement.executeQuery();
 
+                // if resultSet is empty, then username does not exist
                 if (!resultSet.isBeforeFirst()) {
                     System.out.println("Username not found");
                     Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -84,13 +81,16 @@ public class employeeOrderController {
                     alert.show();
                 }   
 
+                // if resultSet is not empty, then username does exist
                 while (resultSet.next()) {
+
+
                     String retrievedPassword = resultSet.getString("password");
                     System.out.println(retrievedPassword);
 
+                    // compare password from user to password from database
                     if(retrievedPassword.equals(password)) {
 
-        
                         // changeScene
                         Parent root = FXMLLoader.load(getClass().getResource("view/employeeOrderViewUI.fxml"));
                         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
