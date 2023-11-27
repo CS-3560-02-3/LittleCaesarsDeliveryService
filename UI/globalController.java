@@ -21,6 +21,7 @@ public class globalController {
     private static customer Customer;
     private static final globalController GlobalController = new globalController();
     private int customerID;
+    private customer currentCustomer;
 
     public int getCustomerID() {
         return customerID;
@@ -28,6 +29,14 @@ public class globalController {
 
     public void setCustomerID(int customerID) {
         this.customerID = customerID;
+    }
+
+    public customer getCurrentCustomer() {
+        return currentCustomer;
+    }
+
+    public void setCurrentCustomer(customer currentCustomer) {
+        this.currentCustomer = currentCustomer;
     }
 
     public static globalController getGlobalController() {

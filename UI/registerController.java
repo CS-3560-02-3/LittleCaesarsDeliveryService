@@ -73,6 +73,8 @@ public class registerController {
     @FXML
     private Label loginMessageLabel;
 
+    globalController GlobalController = globalController.getGlobalController();
+
 
     @FXML
     public void switchToUserLogin(ActionEvent e) throws IOException {
@@ -165,6 +167,8 @@ public class registerController {
                     preparedStatement.setString(8, expDate);
                     preparedStatement.setString(9, cvv);
                     preparedStatement.executeUpdate();
+
+                    GlobalController.setCustomerID(customerID);
 
                     Parent root = FXMLLoader.load(getClass().getResource("view/menu.fxml"));
                     stage = (Stage)((Node)event.getSource()).getScene().getWindow();

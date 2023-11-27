@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class menuController {
@@ -25,11 +26,22 @@ public class menuController {
     @FXML
     private Button login;
 
+    @FXML
+    private Text userName;
+
+    globalController GlobalController = globalController.getGlobalController();
+    customer currentCustomer;
 
     @FXML
     private void initialize() {
         if (hoverContent != null)
             hoverContent.setVisible(false);
+        
+        // retrieve currently logged in customer by ID
+        // int currentCustomerID = GlobalController.getCustomerID();
+        // currentCustomer = GlobalController.getCurrentCustomer();
+        
+
     }
 
     @FXML
