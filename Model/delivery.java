@@ -9,8 +9,8 @@ import java.sql.SQLException;
 public class delivery {
     static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/littlecaesars";
     static final String USER = "root";
-    // static final String PASSWORD = "littleCaesars";
-    static final String PASSWORD = "ilovemysql123";
+    static final String PASSWORD = "littleCaesars";
+    //static final String PASSWORD = "ilovemysql23";
 
     //private global variables
     private int deliveryID;
@@ -113,4 +113,4 @@ public class delivery {
     public driver getAssignedDriver() {
         return Driver;
     } //end getAssignedDriver
-} //end delivery class
+} //end delivery

@@ -3,7 +3,6 @@ package UI;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import Model.customer;
 import Model.menuItems;
 import Model.order;
 
@@ -32,16 +31,19 @@ public class cartController {
     //JDBC connection
     static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/littlecaesars";
     static final String USER = "root";
-    // static final String PASSWORD = "littleCaesars";
-    static final String PASSWORD = "ilovemysql23";
+    static final String PASSWORD = "littleCaesars";
+    //static final String PASSWORD = "ilovemysql23";
 
+    //global declarations
     private Stage stage;
     private Scene scene;
-    globalController GlobalController = globalController.getGlobalController();
     private order orderList;
-    private customer Customer;
     private int tip;
+    
+    //instantiate the GlobalController to retreive the order and customer data
+    globalController GlobalController = globalController.getGlobalController();
 
+    //FXML declarations
     @FXML
     private ScrollPane scrollPane;
 
@@ -69,26 +71,14 @@ public class cartController {
     @FXML
     private RadioButton tip0;
     
-
+    //method to initalize the screen
     public void initialize() {
         orderList = GlobalController.getOrder();
-        Customer = GlobalController.getCurrentCustomer();
         displayItemsToScreen();
         displayTotalCost();
-    }
+    } //end initialize
 
-
-   /*  public void setGlobalController(globalController globalcontroller) {
-        this.globalcontroller = globalcontroller;
-        setOrderList();
-    }
-    
-    public void setOrderList() {
-        this.orderList = globalcontroller.getCurrentOrder(); 
-        //this.Customer = globalcontroller.getCurrentCustomer();
-        
-    }
- */
+    //method to display the items that the user added to the cart
     public void displayItemsToScreen() {
         order_items.getChildren().clear();
         ArrayList<menuItems> duplicates = new ArrayList<>();
@@ -103,8 +93,9 @@ public class cartController {
             }
         }
         scrollPane.setContent(order_items);
-    }
+    } //end displayItemsToScreen
 
+    //private method to create the item panes to attach to the VBox
     private Pane createItemPane(menuItems item) {
         Pane pane = new Pane();
 
@@ -148,13 +139,15 @@ public class cartController {
         text.setLayoutY(50);
         pane.getChildren().add(text);
         return pane;
-    }
+    } //end createItemPane
 
+    //method to display the total cost
     public void displayTotalCost() {
         orderList.calculateTotalCost();
         CostText.setText("TOTAL COST: $" + String.valueOf(orderList.getTotalCost()));
-    }
+    } //end displayTotalCost
 
+    //method to add the tip to the Order object
     @FXML
     public void addTip() {
         if (tip1.isSelected())
@@ -167,6 +160,7 @@ public class cartController {
             tip = 0;
     } 
 
+    //When the user is ready to confirm their order, the order is inserted into the database and the object is wiped for the next customer who orders
     public void switchToConfirmationScreen(ActionEvent e) throws IOException {
         orderList.setTip(tip);
         
@@ -175,16 +169,6 @@ public class cartController {
         ResultSet resultSet = null;
 
         try {
-            /* connection = DriverManager.getConnection(DB_URL, USER, PASSWORD);
-            preparedStatement = connection.prepareStatement("UPDATE `order` SET tip = ?, customerID = ? WHERE orderID = ? ");
-
-            preparedStatement.setInt(1, tip);
-            preparedStatement.setInt(2, GlobalController.getCustomerID());
-            preparedStatement.setInt(3, orderList.getOrderID());
-
-            preparedStatement.executeUpdate();
-            System.out.println("order has been updated with the right attributes in cartController"); */
-
             connection = DriverManager.getConnection(DB_URL, USER, PASSWORD);
 
             preparedStatement = connection.prepareStatement("INSERT INTO `order` (orderID, dateOrdered, tip, customerID) VALUES (?, ?, ?, ?);");
@@ -194,11 +178,7 @@ public class cartController {
             preparedStatement.setInt(4, GlobalController.getCustomerID());
 
             preparedStatement.executeUpdate();
-            System.out.println("INSERT");
-            /* preparedStatement.setInt(1, orderList.getOrderID());
-            preparedStatement.setInt(2, orderList.getDateOrdered());
-            preparedStatement.setInt(3, orderList.getTip());
-            preparedStatement.setInt(4, Customer.getCustomerID()); */
+            System.out.println("Order info inserted into Database");
         }
         catch (Exception error) {
             error.printStackTrace();
@@ -230,14 +210,18 @@ public class cartController {
             }
         }
 
+        //Delete the order from the global controller
+        GlobalController.deleteOrder();
 
+        //switch scenes
         Parent root = FXMLLoader.load(getClass().getResource("view/confirmationScreenUI.fxml"));
         stage = (Stage)((Node)e.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-    }
+    } //end switchToConfirmationScreen
 
+    //scene transitions
     public void switchToMenu(ActionEvent e) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("view/orderViewUI.fxml"));
         stage = (Stage)((Node)e.getSource()).getScene().getWindow();
@@ -245,4 +229,4 @@ public class cartController {
         stage.setScene(scene);
         stage.show();
     }
-}
+} //end cartController

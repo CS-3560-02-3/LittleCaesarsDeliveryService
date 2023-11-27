@@ -10,18 +10,24 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class itemMenuController {
+    //global declarations
     private Stage stage;
     private Scene scene;
-    private globalController globalcontroller;
     private boolean loggedIn;
 
+    //method to set the logged in status
     public void setLoggedInStatus(boolean loggedIn) {
         this.loggedIn = loggedIn;
     }
 
-
+    //scene transitions
     public void switchToMenu(ActionEvent e) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("view/itemMenuViewUI.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("view/itemMenuViewUI.fxml"));
+        Parent root = loader.load();
+
+        itemMenuController itemmenucontroller = loader.getController();
+        itemmenucontroller.setLoggedInStatus(loggedIn);
+
         stage = (Stage)((Node)e.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -29,7 +35,12 @@ public class itemMenuController {
     }
 
     public void switchToCheesePizza(ActionEvent e) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("view/cheesePizzaMenuViewUI.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("view/cheesePizzaMenuViewUI.fxml"));
+        Parent root = loader.load();
+
+        itemMenuController itemmenucontroller = loader.getController();
+        itemmenucontroller.setLoggedInStatus(loggedIn);
+
         stage = (Stage)((Node)e.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -37,7 +48,12 @@ public class itemMenuController {
     }
 
     public void switchToPepperoniPizza(ActionEvent e) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("view/pepperoniPizzaMenuViewUI.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("view/pepperoniPizzaMenuViewUI.fxml"));
+        Parent root = loader.load();
+
+        itemMenuController itemmenucontroller = loader.getController();
+        itemmenucontroller.setLoggedInStatus(loggedIn);
+        
         stage = (Stage)((Node)e.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -45,7 +61,12 @@ public class itemMenuController {
     }
 
     public void switchToThreeMeatPizza(ActionEvent e) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("view/threeMeatPizzaMenuViewUI.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("view/threeMeatPizzaMenuViewUI.fxml"));
+        Parent root = loader.load();
+
+        itemMenuController itemmenucontroller = loader.getController();
+        itemmenucontroller.setLoggedInStatus(loggedIn);
+
         stage = (Stage)((Node)e.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -53,7 +74,12 @@ public class itemMenuController {
     }
 
     public void switchToVeggiePizza(ActionEvent e) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("view/veggiePizzaMenuViewUI.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("view/veggiePizzaMenuViewUI.fxml"));
+        Parent root = loader.load();
+
+        itemMenuController itemmenucontroller = loader.getController();
+        itemmenucontroller.setLoggedInStatus(loggedIn);
+
         stage = (Stage)((Node)e.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -61,7 +87,12 @@ public class itemMenuController {
     }
 
     public void switchToCheesyBread(ActionEvent e) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("view/cheesyBreadMenuViewUI.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("view/cheesyBreadMenuViewUI.fxml"));
+        Parent root = loader.load();
+
+        itemMenuController itemmenucontroller = loader.getController();
+        itemmenucontroller.setLoggedInStatus(loggedIn);
+
         stage = (Stage)((Node)e.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -69,7 +100,12 @@ public class itemMenuController {
     }
 
     public void switchToWings(ActionEvent e) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("view/wingsMenuViewUI.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("view/wingsMenuViewUI.fxml"));
+        Parent root = loader.load();
+
+        itemMenuController itemmenucontroller = loader.getController();
+        itemmenucontroller.setLoggedInStatus(loggedIn);
+
         stage = (Stage)((Node)e.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -77,7 +113,12 @@ public class itemMenuController {
     }
 
     public void switchToDeepDish(ActionEvent e) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("view/deepDishMenuViewUI.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("view/deepDishMenuViewUI.fxml"));
+        Parent root = loader.load();
+
+        itemMenuController itemmenucontroller = loader.getController();
+        itemmenucontroller.setLoggedInStatus(loggedIn);
+
         stage = (Stage)((Node)e.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -85,14 +126,19 @@ public class itemMenuController {
     }
 
     public void switchTo2LiterSoda(ActionEvent e) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("view/twoLiterSodaMenuViewUI.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("view/twoLiterSodaMenuViewUI.fxml"));
+        Parent root = loader.load();
+
+        itemMenuController itemmenucontroller = loader.getController();
+        itemmenucontroller.setLoggedInStatus(loggedIn);
+
         stage = (Stage)((Node)e.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
 
-    //need to fix this with a global boolean but if i can't find a solution, I'm creating 9 new fxml files that are the exact same thing
+    //checks to see whether or not a user is logged in, then take them to the desired main menu
     public void switchToMainMenu(ActionEvent e) throws IOException {
         if (!loggedIn) {
             Parent root = FXMLLoader.load(getClass().getResource("view/mainMenu.fxml"));
@@ -109,6 +155,4 @@ public class itemMenuController {
             stage.show();
         }
     }
-
-
-}
+} //end itemMenuController

@@ -1,17 +1,12 @@
 package UI;
 
 import java.io.IOException;
-import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ResourceBundle;
-
-import Database.DButil;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -22,14 +17,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
 
 
 public class employeeOrderController {
     private Stage stage;
     private Scene scene;
-    private globalController globalController;
 
     @FXML
     private TextField usernameTextField;
@@ -38,12 +31,23 @@ public class employeeOrderController {
     private PasswordField passwordPasswordField;
 
     @FXML
+    private Button backButton;
+
+    @FXML
     private Label loginMessageLabel;
 
     public void signOut(ActionEvent event) throws IOException {
 
         Parent root = FXMLLoader.load(getClass().getResource("view/mainMenu.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void switchToMainMenu(ActionEvent e) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("view/mainMenu.fxml"));
+        stage = (Stage)((Node)e.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
@@ -58,8 +62,8 @@ public class employeeOrderController {
         String DB_URL = "jdbc:mysql://127.0.0.1:3306/littlecaesars";
         String USER = "root";
         //change the password so you can view it. It is the password for your SQL login
-        // String PASSWORD = "littleCaesars";
-        String PASSWORD = "ilovemysql23";
+        String PASSWORD = "littleCaesars";
+        //String PASSWORD = "ilovemysql23";
         
         if(usernameTextField.getText().isEmpty() && passwordPasswordField.getText().isEmpty()) {
             loginMessageLabel.setText("Please enter username and password");
@@ -67,16 +71,21 @@ public class employeeOrderController {
         else 
         {
 
-                // Open a connection
             try 
             {   
+                // retrieving information from user
                 String username = usernameTextField.getText();
                 String password = passwordPasswordField.getText();
+
+                // connecting to database
                 connection = DriverManager.getConnection(DB_URL, USER, PASSWORD);
+
+                // retrieving password associated to username from database
                 preparedStatement = connection.prepareStatement("SELECT password FROM driver WHERE username = ?");
                 preparedStatement.setString(1, username);
                 resultSet = preparedStatement.executeQuery();
 
+                // if resultSet is empty, then username does not exist
                 if (!resultSet.isBeforeFirst()) {
                     System.out.println("Username not found");
                     Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -84,13 +93,16 @@ public class employeeOrderController {
                     alert.show();
                 }   
 
+                // if resultSet is not empty, then username does exist
                 while (resultSet.next()) {
+
+
                     String retrievedPassword = resultSet.getString("password");
                     System.out.println(retrievedPassword);
 
+                    // compare password from user to password from database
                     if(retrievedPassword.equals(password)) {
 
-        
                         // changeScene
                         Parent root = FXMLLoader.load(getClass().getResource("view/employeeOrderViewUI.fxml"));
                         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
