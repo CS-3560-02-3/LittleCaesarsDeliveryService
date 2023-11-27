@@ -30,8 +30,8 @@ public class orderController {
     //JDBC connection
     static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/littlecaesars";
     static final String USER = "root";
-    // static final String PASSWORD = "littleCaesars";
-    static final String PASSWORD = "ilovemysql23";
+    static final String PASSWORD = "littleCaesars";
+    //static final String PASSWORD = "ilovemysql23";
 
     //Stage and Scene declaration
     private Stage stage;
@@ -160,81 +160,88 @@ public class orderController {
 
     //initializer method in order to set the counters to their right values
     public void initialize() {
-        Connection connection = null;
-        Statement statement = null;
-        ResultSet resultSet = null;
-
-        try {
-            connection = DriverManager.getConnection(DB_URL, USER, PASSWORD);
-            statement = connection.createStatement();
-            System.out.println("about to SELCET");
-            resultSet = statement.executeQuery("SELECT orderID FROM `order` WHERE orderID = (SELECT MAX(orderID) FROM `order`)");
-            System.out.println("SELCET");
-
-            int OrderID = 0;
-            while (resultSet.next()) {
-                OrderID = resultSet.getInt("orderID");
+        if (GlobalController.getOrder() == null) {
+            Connection connection = null;
+            Statement statement = null;
+            ResultSet resultSet = null;
+    
+            try {
+                connection = DriverManager.getConnection(DB_URL, USER, PASSWORD);
+                statement = connection.createStatement();
+                System.out.println("about to SELCET");
+                resultSet = statement.executeQuery("SELECT orderID FROM `order` WHERE orderID = (SELECT MAX(orderID) FROM `order`)");
+                System.out.println("SELCET");
+    
+                int OrderID = 0;
+                while (resultSet.next()) {
+                    OrderID = resultSet.getInt("orderID");
+                }
+                System.out.println(OrderID);
+    
+                OrderID++;
+                System.out.println(OrderID);
+    
+                orderList = new order(OrderID, 1127, 0, 0);
+                GlobalController.setOrder(orderList);
+    
+                /* System.out.println("about to INSERT");
+                PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO `order` (orderID, dateOrdered, tip, customerID) VALUES (?, ?, ?, ?);");
+                preparedStatement.setInt(1, OrderID);
+                preparedStatement.setInt(2, 1127);
+                preparedStatement.setInt(3, 0);
+                preparedStatement.setInt(4, GlobalController.getCustomerID());
+    
+                preparedStatement.executeUpdate();
+                System.out.println("INSERT");
+    
+                //issue
+                System.out.println("about to create object");
+                orderList = new order(OrderID, 1127, 0, 0);
+                System.out.println(orderList.getOrderID());
+                System.out.println(orderList.getDateOrdered());
+                System.out.println(orderList.getTotalCost());
+                System.out.println(orderList.getTip());
+                System.out.println(GlobalController.getCustomerID());
+                System.out.println("create object");
+                System.out.println("about to assign to globak");
+                GlobalController.setOrder(orderList);
+                System.out.println("assgined to global"); */
             }
-            System.out.println(OrderID);
-
-            OrderID++;
-            System.out.println(OrderID);
-
-            orderList = new order(OrderID, 1127, 0, 0);
-            GlobalController.setOrder(orderList);
-
-            /* System.out.println("about to INSERT");
-            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO `order` (orderID, dateOrdered, tip, customerID) VALUES (?, ?, ?, ?);");
-            preparedStatement.setInt(1, OrderID);
-            preparedStatement.setInt(2, 1127);
-            preparedStatement.setInt(3, 0);
-            preparedStatement.setInt(4, GlobalController.getCustomerID());
-
-            preparedStatement.executeUpdate();
-            System.out.println("INSERT");
-
-            //issue
-            System.out.println("about to create object");
-            orderList = new order(OrderID, 1127, 0, 0);
-            System.out.println(orderList.getOrderID());
-            System.out.println(orderList.getDateOrdered());
-            System.out.println(orderList.getTotalCost());
-            System.out.println(orderList.getTip());
-            System.out.println(GlobalController.getCustomerID());
-            System.out.println("create object");
-            System.out.println("about to assign to globak");
-            GlobalController.setOrder(orderList);
-            System.out.println("assgined to global"); */
+            catch (Exception e) {
+                e.printStackTrace();
+            }
+            finally {
+                if (resultSet != null) {
+                    try {
+                        resultSet.close();
+                    } 
+                    catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (statement != null) {
+                    try {
+                        statement.close();
+                    }
+                    catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (connection != null) {
+                    try {
+                        connection.close();
+                    }
+                    catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
         }
-        catch (Exception e) {
-            e.printStackTrace();
+        else {
+            orderList = GlobalController.getOrder();
         }
-        finally {
-            if (resultSet != null) {
-                try {
-                    resultSet.close();
-                } 
-                catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (statement != null) {
-                try {
-                    statement.close();
-                }
-                catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (connection != null) {
-                try {
-                    connection.close();
-                }
-                catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
+
+
         //assigning the orderlist to the customer
 
         /* //Calling the global Controller in order to instantiate a globalController Object
